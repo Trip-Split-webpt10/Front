@@ -30,11 +30,11 @@ const HeaderStyles = styled.div`
     margin: 0; 
     padding: 0 10px;
     height: 50px;
-    background-color: lightgray;
     display: flex;
     justify-content: space-between;
     align-content: center;
     align-items: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     .links{
         margin-right: 25px;
     }
@@ -44,7 +44,13 @@ const HeaderStyles = styled.div`
        
     }
     li{
-        margin: 5px 15px
+        margin: 5px 15px;
+        padding: 7px 20px;
+        border-radius: 15px;
+    }
+    li:hover{
+        background: lightgrey;
+        transition-duration: 0.8s;
     }
     a{
         text-decoration: none;
