@@ -10,8 +10,6 @@ function Jumbotron() {
         var API_KEY = '13685655-0e6f690b36aca03be604bf4d3';
         var URL = "https://pixabay.com/api/?key="+API_KEY+"&q="+encodeURIComponent('restaurants');
         axios.get(URL).then(res=>{
-            
-           
             setRandomImages(res.data.hits)
 
         }).catch(console.log);
