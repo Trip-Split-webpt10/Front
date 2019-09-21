@@ -12,6 +12,7 @@
     "semantic-ui-react": "^0.88.1",
     "styled-components": "^4.3.2",
     "unsplash-js": "^5.0.0"
+    "styled-components": "^4.3.2"
   },
   "scripts": {
     "start": "react-scripts start",

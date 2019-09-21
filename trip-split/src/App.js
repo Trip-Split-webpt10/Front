@@ -1,17 +1,15 @@
 import React from 'react';
 import Header from './Components/Header/Header'
+import AboutUs from './Components/AboutUs/AboutUs';
 import './App.css';
-import Jumbotron from './Components/HomePage/Jumbotron/Jumbotron';
-import Cards from './Components/HomePage/SugestionCards/Cards';
+import CreateATrip from './Components/CreateATrip/CreateTrip';
 
 function App() {
   return (
-    <div className="App">
+    <>
       <Header />
-      <Jumbotron />
-      <Cards />
-    </div>
+      <CreateATrip/>
+    </>
   );
 }
-
 export default App;
