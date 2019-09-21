@@ -29,6 +29,10 @@ const HeaderStyles = styled.div`
     width : 100%;
     margin: 0; 
     padding: 0 10px;
+    position: fixed;
+    top: 0;
+    left: 0px;
+    background-color: white;
     height: 50px;
     display: flex;
     justify-content: space-between;
