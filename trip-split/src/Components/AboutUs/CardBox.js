@@ -12,7 +12,6 @@ const Box = styled.div`
     flex-flow: row wrap;
     justify-content: space-around;
     background-color: white;
-    margin-bottom: 25%;
 `;
 
 function CardBox() {
