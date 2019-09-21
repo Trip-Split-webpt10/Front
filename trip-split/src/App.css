@@ -7,6 +7,7 @@
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
   pointer-events: none;
+}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -43,7 +44,7 @@ footer, header, hgroup, menu, nav, section {
   to {
     transform: rotate(360deg);
   }
-
+}
 body {
 	line-height: 1;
 }
