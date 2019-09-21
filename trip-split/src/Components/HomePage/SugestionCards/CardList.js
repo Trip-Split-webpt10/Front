@@ -3,7 +3,7 @@ import { Container } from 'semantic-ui-react';
 
 function CardList() {
     return (
-       
+       <></>
     )
 }
 
