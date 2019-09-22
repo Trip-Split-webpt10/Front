@@ -33,4 +33,8 @@ const TripsStyles = styled.div`
     height: 100%;
     max-width: 1024px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center; 
+    align-items: center;
 `;
