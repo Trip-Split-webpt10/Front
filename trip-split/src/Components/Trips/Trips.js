@@ -14,8 +14,10 @@ function Trips(props) {
     const [tripId, setTripId ] = useState(null);
 
     const toggleModalClass = ()=>{
+        console.log('hi')
         let cssProperties = (activeModal === 'hidden') ? 'show' : 'hidden';
         setActiveModal(cssProperties)
+       
     }
     function getAllTrips (){
         const url = 'https://trip-split-api.herokuapp.com/api/trips'
@@ -31,7 +33,12 @@ function Trips(props) {
     }, [tripId]);
     
     function getSingleTrip(id){
-        console.log(id)
+        const url = `https://trip-split-api.herokuapp.com/api/trips/${id}/expenses`
+        axios.get(url)
+            .then(res=>{
+                setSingleTrip(res.data);
+            })
+            .catch(err=>console.log)
     }
     return (
         <>
@@ -46,8 +53,9 @@ function Trips(props) {
            />
         </TripsStyles>
         <ExpensePage 
-            activeModal ={activeModal}
-            toggleModalClass = {toggleModalClass}
+            activeModal ={ activeModal }
+            toggleModalClass = { toggleModalClass }
+            singleTrip ={ singleTrip }
         />
         </>
     )
@@ -57,7 +65,6 @@ export default Trips
 
 
 const TripsStyles = styled.div`
-display: none;
     position: relative;
     margin: 60px auto 0 auto;
     height: 100%;

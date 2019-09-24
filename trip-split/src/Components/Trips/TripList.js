@@ -6,19 +6,24 @@ import TripCard from './TripCard';
 function TripList(props ) {
     function handleClick(e){
         e.preventDefault();
+        console.log(props)
         props.toggleModalClass();
     }   
     return (
         <>
             {props.allTrips.map(trip=>{
                 return (
-                    <TripCardStyles onClick={handleClick} onClick={ ()=>{props.getSingleTrip(trip.id)}} key={ trip.destination }>
+                    <TripCardStyles onClick={ (e)=>{
+                        handleClick(e)
+                        props.getSingleTrip(trip.id)
+                        }} 
+                        key={ trip.destination }>
                         <img src ={image} atl ={trip.destination} />
                         <h2>{trip.destination}</h2>
                         <h4>{trip.start_date}</h4>
                     </TripCardStyles>
                 )
-                
+
                   })}
         </>
     )

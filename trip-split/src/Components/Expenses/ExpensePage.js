@@ -4,9 +4,6 @@ import Modal from './Modal';
 
 function ExpensePage(props) {
     console.log(props)
-
-    useEffect(()=>{
-    },[props.activeModal])
     return (
         <ExpensePageStyles className ={`${props.activeModal}`} >
             <h1 onClick={props.toggleModalClass}>Close</h1>
