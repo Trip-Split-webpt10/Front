@@ -30,27 +30,24 @@ const Column = styled.div`
     flex-flow: column nowrap;
 `;
 
-const CreateATripForm = ({ errors, touched }) => {
+const CreateATripForm = ({ errors, touched, status }) => {
+    const [trip, setTrips] = useState([])
+    useEffect(() => {
+        if (status) {
+            setTrips([...trip, status])
+        }
+    }, [status])
     return (
         <>
             <Header>Create A Trip</Header>
             <Form>
                 <FormDisplayFlex>
-                    {touched.NameOfTrip && errors.NameOfTrip && <p className="error">{errors.NameOfTrip}</p>}
-                    <Field type="text" id='fieldstyle' name="NameOfTrip" placeholder="Name Of Trip" />
-                    {touched.FriendAmount && errors.FriendAmount && <p className="error">{errors.FriendAmount}</p>}
-                    <Field type="number" id='fieldstyle' name="FriendAmount" placeholder="Amount Of Friends" />
-                    <Header>Expense</Header>
-                    <Row>
-                        <Column>
-                            {touched.ExpenseDescription && errors.ExpenseDescription && <p className="error">{errors.ExpenseDescription}</p>}
-                            <Field type="text" id='fieldstyle' name="ExpenseDescription" placeholder="Expense Description" />
-                        </Column>
-                        <Column>
-                            {touched.ExpenseCost && errors.ExpenseCost && <p className="error">{errors.ExpenseCost}</p>}
-                            <Field type="text" id='fieldstyle' name="ExpenseCost" placeholder="Cost" />
-                        </Column>
-                    </Row>
+                    {touched.NameOfTrip && errors.destination && <p className="error">{errors.destination}</p>}
+                    <Field type="text" id='fieldstyle' name="destination" placeholder="destination" />
+                    {touched.start_date && errors.start_date && <p className="error">{errors.start_date}</p>}
+                    <Field type="date" id='fieldstyle' name="start_date" placeholder="Start Date" />
+                    {touched.end_date && errors.end_date && <p className="error">{errors.end_date}</p>}
+                    <Field type="date" id='fieldstyle' name="end_date" placeholder="End Date" />
                     <button type="submit">Submit</button>
                 </FormDisplayFlex>
             </Form>
@@ -61,22 +58,20 @@ const CreateATripForm = ({ errors, touched }) => {
 export default withFormik({
     mapPropsToValues: (values) => {
         return {
-            NameOfTrip: values.NameOfTrip || '',
-            FriendAmount: values.FriendAmount || '',
-            ExpenseDescription: values.ExpenseDescription || '',
-            ExpenseCost: values.ExpenseCost || ''
+            destination: values.destination || '',
+            start_date: values.start_date || '',
+            end_date: values.end_date || ''
         }
     },
     validationSchema: yup.object().shape({
-        NameOfTrip: yup.string().required('Name of Trip is a required field!'),
-        FriendAmount: yup.number().positive().required('Friend Amount is a required!'),
-        ExpenseDescription: yup.string().required('Expense Description is a required field!'),
-        ExpenseCost: yup.string().required('Expense Cost is a required field!')
+        destination: yup.string().required('Destination is a required field!'),
+        start_date: yup.string().required('Start Date is a required field'),
+        end_date: yup.string().required('End Date is a required field!')
     }),
-    handleSubmit: (values, { setStatus }) => {
-        Axios.post('', values)
+    handleSubmit: (values) => {
+        Axios.post('https://trip-split-api.herokuapp.com/api/trips', values)
             .then((res) => {
-                setStatus(res.data)
+                console.log(res.data)
             })
             .catch((error) => {
                 console.log(error)
