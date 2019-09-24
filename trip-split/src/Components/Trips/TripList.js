@@ -1,15 +1,19 @@
 import React from 'react'
 import TripCard from './TripCard';
 
-function TripList({props, allTrips}) {
+function TripList(props ) {
+    function handleClick(e){
+        e.preventDefault();
+        props.toggleModalClass();
+    }   
     return (
         <>
-            {allTrips.map(trip=>{
+            {props.allTrips.map(trip=>{
               return <TripCard 
                     {...props}
                     key={trip.destination}
                     trip = {trip}
-                    
+                    handleClick = {handleClick}
                  />
             })}
         </>

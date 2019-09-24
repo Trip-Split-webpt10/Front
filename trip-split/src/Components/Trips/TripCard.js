@@ -4,12 +4,12 @@
 
 
  
- function TripCard({props, trip}) {
+ function  TripCard(props) {
      return (
-         <TripCardStyles>
-             <img src ={image} atl ={trip.destination} />
-             <h2>{trip.destination}</h2>
-             <h4>{trip.start_date}</h4>
+         <TripCardStyles onClick={props.handleClick}>
+             <img src ={image} atl ={props.trip.destination} />
+             <h2>{props.trip.destination}</h2>
+             <h4>{props.trip.start_date}</h4>
          </TripCardStyles>
      )
  }
