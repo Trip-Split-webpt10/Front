@@ -5,7 +5,7 @@ import CardBox from './CardBox';
 
 const AboutUsCard = styled.div`
 width: 100%;
-height: 1500px;
+height: 1000px;
 background-color: #FAFAFA;
 `
 

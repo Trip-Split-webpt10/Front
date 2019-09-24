@@ -16,6 +16,7 @@ function Header() {
                     <li><Link to ='/'>Home</Link></li>
                     <li><Link to ='/trips'>Recent Trips</Link></li>
                     <li><Link to ='/createtrip'>Create Trip</Link></li>
+                    <li><Link to ='/aboutus'>About Us</Link></li>
                     <li><Link to ='/login'>Login</Link></li>
                 </ul>
             </div>
@@ -27,8 +28,7 @@ export default Header
 
 const HeaderStyles = styled.div`
     width : 100%;
-    margin: 0; 
-    padding: 0 10px;
+    margin: 0;
     position: fixed;
     top: 0;
     left: 0px;
