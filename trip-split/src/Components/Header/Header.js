@@ -27,7 +27,11 @@ export default Header
 
 const HeaderStyles = styled.div`
     width : 100%;
-    margin: 0; 
+    margin: 0;
+    position: fixed;
+    top: 0;
+    left: 0px;
+    background-color: white;
     height: 50px;
     display: flex;
     justify-content: space-between;
