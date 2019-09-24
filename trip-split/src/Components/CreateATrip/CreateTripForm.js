@@ -37,7 +37,7 @@ const CreateATripForm = ({ errors, touched }) => {
             <Header>Create A Trip</Header>
             <Form>
                 <FormDisplayFlex>
-                    {touched.NameOfTrip && errors.destination && <p className="error">{errors.destination}</p>}
+                    {touched.destination && errors.destination && <p className="error">{errors.destination}</p>}
                     <Field type="text" id='fieldstyle' name="destination" placeholder="destination" />
                     {touched.start_date && errors.start_date && <p className="error">{errors.start_date}</p>}
                     <Field type="date" id='fieldstyle' name="start_date" placeholder="Start Date" />
@@ -66,10 +66,10 @@ export default withFormik({
     handleSubmit: (values) => {
         Axios.post('https://trip-split-api.herokuapp.com/api/trips', values)
             .then(() => {
-                return MySwal.fire(<p>Trip Saved Successfully.</p>)
+                return MySwal.fire({type:'success', title:'Trip Created Successfully',text:'Good Job!'})
             })
             .catch((error) => {
-                return MySwal.fire(<p>Error creating trip!</p>)
+                return MySwal.fire({type:'error', title:'There was an error',text:'Try Again!'})
             })
     }
 })(CreateATripForm)
