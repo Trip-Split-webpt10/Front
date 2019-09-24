@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { withFormik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import Axios from 'axios';
@@ -12,7 +12,7 @@ const FormDisplayFlex = styled.div`
     margin-top: 2%;
 `;
 const Header = styled.h1`
-    margin-top: 2%;
+    margin: 2% 0% 0% 0%;
     text-align: center;
     font-size: 2rem;
     font-weight: bold;
@@ -22,54 +22,64 @@ const Row = styled.div`
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-around;
+    margin-bottom: 2%;
 `;
 
-const CreateATripForm = ({errors, touched}) => {
-  return (
-      <>
-    <Header>Create A Trip</Header>
-    <Form>
-    <FormDisplayFlex>
-      {touched.NameOfTrip && errors.NameOfTrip && <p className="error">{errors.NameOfTrip}</p>}
-      <Field type="text" id='fieldstyle' name="NameOfTrip" placeholder="Name Of Trip" />
-      {touched.FriendAmount && errors.FriendAmount && <p className="error">{errors.FriendAmount}</p>}
-      <Field type="number" id='fieldstyle' name="FriendAmount" placeholder="Amount Of Friends" />
-      <Header>Expense(s)</Header>
-      <Row id="hello">
-      {touched.ExpenseDescription && errors.ExpenseDescription && <p className="error">{errors.ExpenseDescription}</p>}
-            <Field type="text" id='fieldstyle' name="ExpenseDescription" placeholder="Expense Description" />
-            {touched.ExpenseCost && errors.ExpenseCost && <p className="error">{errors.ExpenseCost}</p>}
-            <Field type="text" id='fieldstyle' name="ExpenseCost" placeholder="Cost" />
-      </Row>
-      <button type="submit">Submit</button>
-      </FormDisplayFlex>
-    </Form>
-    </>
-  )
+const Column = styled.div`
+    display: flex;
+    flex-flow: column nowrap;
+`;
+
+const CreateATripForm = ({ errors, touched }) => {
+    return (
+        <>
+            <Header>Create A Trip</Header>
+            <Form>
+                <FormDisplayFlex>
+                    {touched.NameOfTrip && errors.NameOfTrip && <p className="error">{errors.NameOfTrip}</p>}
+                    <Field type="text" id='fieldstyle' name="NameOfTrip" placeholder="Name Of Trip" />
+                    {touched.FriendAmount && errors.FriendAmount && <p className="error">{errors.FriendAmount}</p>}
+                    <Field type="number" id='fieldstyle' name="FriendAmount" placeholder="Amount Of Friends" />
+                    <Header>Expense</Header>
+                    <Row>
+                        <Column>
+                            {touched.ExpenseDescription && errors.ExpenseDescription && <p className="error">{errors.ExpenseDescription}</p>}
+                            <Field type="text" id='fieldstyle' name="ExpenseDescription" placeholder="Expense Description" />
+                        </Column>
+                        <Column>
+                            {touched.ExpenseCost && errors.ExpenseCost && <p className="error">{errors.ExpenseCost}</p>}
+                            <Field type="text" id='fieldstyle' name="ExpenseCost" placeholder="Cost" />
+                        </Column>
+                    </Row>
+                    <button type="submit">Submit</button>
+                </FormDisplayFlex>
+            </Form>
+        </>
+    )
 }
 
 export default withFormik({
-  mapPropsToValues: (values) => {
-    return {
-      NameOfTrip: values.NameOfTrip || '',
-      FriendAmount: values.FriendAmount || '',
-      ExpenseDescription: values.ExpenseDescription || '',
-      ExpenseCost: values.ExpenseCost || ''
+    mapPropsToValues: (values) => {
+        return {
+            NameOfTrip: values.NameOfTrip || '',
+            FriendAmount: values.FriendAmount || '',
+            ExpenseDescription: values.ExpenseDescription || '',
+            ExpenseCost: values.ExpenseCost || ''
+        }
+    },
+    validationSchema: yup.object().shape({
+        NameOfTrip: yup.string().required('Name of Trip is a required field!'),
+        FriendAmount: yup.number().positive().required('Friend Amount is a required!'),
+        ExpenseDescription: yup.string().required('Expense Description is a required field!'),
+        ExpenseCost: yup.string().required('Expense Cost is a required field!')
+    }),
+    handleSubmit: (values, { setStatus }) => {
+        Axios.post('', values)
+            .then((res) => {
+                setStatus(res.data)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
     }
-  },
-  validationSchema: yup.object().shape({
-    NameOfTrip: yup.string().required('Name of Trip is a required field!'),
-    FriendAmount: yup.number().positive().required('Friend Amount is a required!'),
-    ExpenseDescription: yup.string().required('Expense Description is a required field!'),
-    ExpenseCost: yup.string().required('Expense Cost is a required field!')
-  }),
-  handleSubmit:(values, {setStatus})=>{
-    Axios.post('', values)
-    .then((res)=>{
-      setStatus(res.data)
-    })
-    .catch((error)=>{
-      console.log(error)
-    })
-  }
 })(CreateATripForm)
