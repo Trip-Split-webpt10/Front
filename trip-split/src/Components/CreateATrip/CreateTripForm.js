@@ -12,7 +12,7 @@ const FormDisplayFlex = styled.div`
     margin-top: 2%;
 `;
 const Header = styled.h1`
-    margin: 2% 0% 0% 0%;
+    margin: 5% 0% 0% 0%;
     text-align: center;
     font-size: 2rem;
     font-weight: bold;
