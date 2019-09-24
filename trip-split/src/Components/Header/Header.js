@@ -27,8 +27,7 @@ export default Header
 
 const HeaderStyles = styled.div`
     width : 100%;
-    margin: 0; 
-    padding: 0 10px;
+    margin: 0;
     position: fixed;
     top: 0;
     left: 0px;

@@ -1,13 +1,24 @@
 import React from 'react';
-import styled from 'styled-components';
 import './CreateTrip.css';
+import CreateATripForm from './CreateTripForm';
 
 
 function CreateATrip() {
+    function hideBackground(){
+        let backgroundgif = document.getElementById('BackgroundHide')
+        backgroundgif.style.display = 'none';
+        let tripform = document.getElementById('TripForm');
+        tripform.style.display = 'block';
+    };
     return (
-        <div className="backgroundgif">
-        <button>Split A Trip</button>
+        <>
+        <div id="BackgroundHide" className="backgroundgif">
+        <button onClick={hideBackground}>Split A Trip</button>
         </div>
+        <div id="TripForm">
+        <CreateATripForm/>
+        </div>
+        </>
     );
 }
 
