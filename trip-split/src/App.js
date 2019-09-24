@@ -8,7 +8,25 @@ function App() {
   return (
     <>
       <Header />
-      <CreateATrip/>
+      <Route 
+        path = '/'
+        exact
+        render= {props =>{
+
+          return <CreateATrip />
+        }}
+      />
+      <Route 
+        path = '/trips'
+        exact
+        render= {props =>{
+
+          return (
+            <Trips 
+              {...props}
+            />)
+        }}
+      />
     </>
   );
 }
