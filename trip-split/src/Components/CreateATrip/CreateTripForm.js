@@ -71,10 +71,10 @@ export default withFormik({
     handleSubmit: (values) => {
         Axios.post('https://trip-split-api.herokuapp.com/api/trips', values)
             .then((res) => {
-                console.log(res.data)
+                alert("Trip Added!")
             })
             .catch((error) => {
-                console.log(error)
+                alert(error)
             })
     }
 })(CreateATripForm)
