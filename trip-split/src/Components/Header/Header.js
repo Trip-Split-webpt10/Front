@@ -14,7 +14,7 @@ function Header() {
             <div className='links'>
                 <ul>
                     <li><Link to ='/'>Home</Link></li>
-                    <li><Link to ='/recentTrips'>Recent Trips</Link></li>
+                    <li><Link to ='/trips'>Recent Trips</Link></li>
                     <li><Link to ='/createtrip'>Create Trip</Link></li>
                     <li><Link to ='/login'>Login</Link></li>
                 </ul>
@@ -29,6 +29,10 @@ const HeaderStyles = styled.div`
     width : 100%;
     margin: 0; 
     padding: 0 10px;
+    position: fixed;
+    top: 0;
+    left: 0px;
+    background-color: white;
     height: 50px;
     display: flex;
     justify-content: space-between;
