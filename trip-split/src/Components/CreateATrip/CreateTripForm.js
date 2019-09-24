@@ -62,7 +62,7 @@ export default withFormik({
     NameOfTrip: yup.string().required('Name of Trip is a required field!'),
     FriendAmount: yup.number().positive().required('Friend Amount is a required!'),
     ExpenseDescription: yup.string().required('Expense Description is a required field!'),
-    xpenseCost: yup.string().required('Expense Cost is a required field!')
+    ExpenseCost: yup.string().required('Expense Cost is a required field!')
   }),
   handleSubmit:(values, {setStatus})=>{
     Axios.post('', values)
