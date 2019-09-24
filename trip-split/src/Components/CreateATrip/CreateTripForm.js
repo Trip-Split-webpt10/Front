@@ -3,6 +3,10 @@ import { withFormik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import Axios from 'axios';
 import styled from 'styled-components';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const MySwal = withReactContent(Swal)
 
 const FormDisplayFlex = styled.div`
     width: 50%;
@@ -12,7 +16,7 @@ const FormDisplayFlex = styled.div`
     margin-top: 2%;
 `;
 const Header = styled.h1`
-    margin: 2% 0% 0% 0%;
+    margin: 5% 0% 0% 0%;
     text-align: center;
     font-size: 2rem;
     font-weight: bold;
@@ -25,18 +29,9 @@ const Row = styled.div`
     margin-bottom: 2%;
 `;
 
-const Column = styled.div`
-    display: flex;
-    flex-flow: column nowrap;
-`;
 
-const CreateATripForm = ({ errors, touched, status }) => {
-    const [trip, setTrips] = useState([])
-    useEffect(() => {
-        if (status) {
-            setTrips([...trip, status])
-        }
-    }, [status])
+const CreateATripForm = ({ errors, touched }) => {
+    const [trip, setTrips] = useState([])//not used currently
     return (
         <>
             <Header>Create A Trip</Header>
@@ -70,11 +65,11 @@ export default withFormik({
     }),
     handleSubmit: (values) => {
         Axios.post('https://trip-split-api.herokuapp.com/api/trips', values)
-            .then((res) => {
-                alert("Trip Added!")
+            .then(() => {
+                return MySwal.fire(<p>Trip Saved Successfully.</p>)
             })
             .catch((error) => {
-                alert(error)
+                return MySwal.fire(<p>Error creating trip!</p>)
             })
     }
 })(CreateATripForm)
