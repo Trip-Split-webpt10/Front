@@ -24,7 +24,7 @@ button{
   }
   button:hover{
     background:#fff;
-    color:pink;
+    color:grey;
   }
   button:before,button:after{
     content:'';
@@ -46,6 +46,19 @@ button{
     width:100%;
     transition:800ms ease all;
   }
-  .TripForm{
+  #TripForm{
     display:none;
+  }
+
+  #fieldstyle{
+    height: 25px;
+    margin-top: 2%;
+    text-align: center;
+    border-radius: 1px;
+    border: #d3d3d3 1px solid;
+  }
+  .error{
+    margin-top: 2%;
+    font-weight: bold;
+    color: #FF6347;
   }
