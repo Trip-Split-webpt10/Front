@@ -1,5 +1,5 @@
 
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import styled from 'styled-components';
 import axios from 'axios'
@@ -8,27 +8,41 @@ import ExpensePage from '../Expenses/ExpensePage';
 
 function Trips(props) {
     const [allTrips, setALlTrips] = useState([]);
+    //state for handling class toggle on clicks
     const [activeModal, setActiveModal ] = useState('hidden');
+    const [singleTrip, setSingleTrip] = useState([]);
+    const [tripId, setTripId ] = useState(null);
 
     const toggleModalClass = ()=>{
         let cssProperties = (activeModal === 'hidden') ? 'show' : 'hidden';
         setActiveModal(cssProperties)
     }
-    useState(()=>{
+    function getAllTrips (){
         const url = 'https://trip-split-api.herokuapp.com/api/trips'
         axios.get(url)
             .then(res=>{
+                console.log(res)
                 setALlTrips(res.data);
             })
             .catch(err=>console.log)
-    }, [allTrips, activeModal]);
+    }   
+    useEffect(()=>{
+        getAllTrips() 
+    }, [tripId]);
+    
+    function getSingleTrip(id){
+        console.log(id)
+    }
     return (
         <>
+      
         <TripsStyles>
            <TripList 
            props = {props}
             allTrips ={allTrips}
             toggleModalClass = {toggleModalClass}
+            setTripId = { setTripId }
+            getSingleTrip ={ getSingleTrip }
            />
         </TripsStyles>
         <ExpensePage 

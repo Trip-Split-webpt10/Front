@@ -1,11 +1,16 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
+import Modal from './Modal';
 
 function ExpensePage(props) {
-    console.log(props.activeModal)
+    console.log(props)
+
+    useEffect(()=>{
+    },[props.activeModal])
     return (
         <ExpensePageStyles className ={`${props.activeModal}`} >
             <h1 onClick={props.toggleModalClass}>Close</h1>
+            <Modal />
         </ExpensePageStyles>
     )
 }
@@ -23,7 +28,11 @@ const ExpensePageStyles = styled.div`
     h1{
         float: right;
         cursor: pointer;
-    }
+        color: #000000;
+        font-weight: bolder;
+        font-size: 1.5rem;
+        margin-right: 15px;
+        }
     &.show{
         display: block;
     }
