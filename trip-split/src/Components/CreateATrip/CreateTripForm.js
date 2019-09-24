@@ -3,7 +3,6 @@ import { withFormik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import Axios from 'axios';
 import styled from 'styled-components';
-import { EventEmitter } from 'events';
 
 const FormDisplayFlex = styled.div`
     width: 50%;
