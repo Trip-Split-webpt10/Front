@@ -66,10 +66,10 @@ export default withFormik({
     handleSubmit: (values) => {
         Axios.post('https://trip-split-api.herokuapp.com/api/trips', values)
             .then(() => {
-                return MySwal.fire(<p>Trip Saved Successfully.</p>)
+                return MySwal.fire({type:'success', title:'Trip Created Successfully',text:'Good Job!'})
             })
             .catch((error) => {
-                return MySwal.fire(<p>Error creating trip!</p>)
+                return MySwal.fire({type:'error', title:'There was an error',text:'Try Again!'})
             })
     }
 })(CreateATripForm)
