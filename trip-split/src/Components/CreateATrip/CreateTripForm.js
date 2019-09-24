@@ -37,7 +37,7 @@ const CreateATripForm = ({ errors, touched }) => {
             <Header>Create A Trip</Header>
             <Form>
                 <FormDisplayFlex>
-                    {touched.NameOfTrip && errors.destination && <p className="error">{errors.destination}</p>}
+                    {touched.destination && errors.destination && <p className="error">{errors.destination}</p>}
                     <Field type="text" id='fieldstyle' name="destination" placeholder="destination" />
                     {touched.start_date && errors.start_date && <p className="error">{errors.start_date}</p>}
                     <Field type="date" id='fieldstyle' name="start_date" placeholder="Start Date" />
