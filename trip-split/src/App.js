@@ -2,6 +2,9 @@ import React from 'react';
 import Header from './Components/Header/Header'
 import './App.css';
 import CreateATrip from './Components/CreateATrip/CreateTrip';
+import Trips from './Components/Trips/Trips'
+import AboutUs from './Components/AboutUs/AboutUs'
+import Jumbotron from './Components/HomePage/Jumbotron/Jumbotron'
 import {BrowserRouter as Router,Route,Link} from 'react-router-dom';
 
 function App() {
@@ -10,6 +13,13 @@ function App() {
       <Header />
       <Route 
         path = '/'
+        exact
+        render= {props =>{
+          return <Jumbotron />
+        }}
+      />
+      <Route 
+        path = '/createtrip'
         exact
         render= {props =>{
 
@@ -23,6 +33,17 @@ function App() {
 
           return (
             <Trips 
+              {...props}
+            />)
+        }}
+      />
+      <Route 
+        path = '/aboutus'
+        exact
+        render= {props =>{
+
+          return (
+            <AboutUs
               {...props}
             />)
         }}
