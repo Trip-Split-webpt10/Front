@@ -74,4 +74,7 @@ const TripsStyles = styled.div`
     justify-content: space-evenly;
     align-content: center; 
     align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    background: #ffffff;
 `;
