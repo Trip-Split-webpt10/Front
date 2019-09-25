@@ -12,8 +12,8 @@ function Login() {
         <LongInStyles>
             <div className='login'>
                 <ul>
-                    <li>Login</li>
-                    <li>Sing Up</li>
+                    <li onClick={()=>{setIsLogin(true)}}>Login</li>
+                    <li onClick={()=>{setIsLogin(false)}}>Sing Up</li>
                 </ul>
                 { isLogin ? 
                     <Form>
@@ -29,7 +29,7 @@ function Login() {
                         {/* {touched.password && errors.password && <p className="error">{errors.password}</p>} */}
                         <Field type='password' placeholder='Password' name='password'/>
                     </div>
-                    <Field type='submit' placeholder='Login' name='Submit'/>
+                    <Field type='submit' value='Login' name='signup'/>
                 </Form> :
                 <Form>
                 <div className='fieldDiv'>
@@ -44,7 +44,7 @@ function Login() {
                     {/* {touched.password && errors.password && <p className="error">{errors.password}</p>} */}
                     <Field type='password' placeholder='Password' name='password'/>
                 </div>
-                <Field type='submit' placeholder='Login' name='Submit'/>
+                <Field type='submit' value='Signup' name='Submit'/>
             </Form>
                 }
             </div>
