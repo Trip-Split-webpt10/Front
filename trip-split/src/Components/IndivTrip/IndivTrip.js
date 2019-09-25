@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import './indiv.css';
+import AddUserForm from './IndivForms/newFriendForm';
+import Trips from '../Trips/Trips';
 
 
 
@@ -15,7 +17,6 @@ function IndivTrip(trip) {
                 setTrips(response.data.trip)
                 setUsers(response.data.users)
                 setCost(response.data.expenses);
-                console.log(response.data)
             })
             .catch(err => {
                 console.log(err)
@@ -45,7 +46,7 @@ function IndivTrip(trip) {
             </div>
             <div className="FlexDiv">
                 <div className="Form">
-                    
+                    <AddUserForm trip={trip}></AddUserForm>
                 </div>
                 <div className="UserCost">
                     <div className="UserCostHeader">Total People: {Users.length}</div>
@@ -56,7 +57,6 @@ function IndivTrip(trip) {
                     <div className="tripStats">Cost Per Person: {costPerPerson(Users.length)}</div>
                 </div>
                 <div>
-
                 </div>
             </div>
         </div>
