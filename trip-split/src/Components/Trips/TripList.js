@@ -17,7 +17,7 @@ function TripList(props ) {
                         handleClick(e)
                         props.getSingleTrip(trip.id)
                         }} 
-                        key={ trip.destination }>
+                        key={ trip.id }>
                         <img src ={image} atl ={trip.destination} />
                         <h2>{trip.destination}</h2>
                         <h4>{trip.start_date}</h4>
