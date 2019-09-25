@@ -3,6 +3,7 @@ import React,  {useState} from 'react';
 import styled from 'styled-components';
 import {withFormik, Form, Field} from 'formik'
 import Axios from 'axios';
+ 
 
 function Login() {
     const [isLogin, setIsLogin ] = useState(true)
@@ -12,15 +13,19 @@ function Login() {
         <LongInStyles>
             <div className='login'>
                 <ul>
-                    <li onClick={()=>{setIsLogin(true)}}>Login</li>
-                    <li onClick={()=>{setIsLogin(false)}}>Sing Up</li>
+                    <li onClick={()=>{
+                        setIsLogin(true)
+                        }}>
+                        Login
+                    </li>
+                    <li onClick={()=>{
+                        setIsLogin(false)
+                        }}>
+                        Sing Up
+                    </li>
                 </ul>
                 { isLogin ? 
                     <Form>
-                    <div className='fieldDiv'>
-                        {/* {touched.name && errors.name && <p className="error">{errors.name}</p>} */}
-                        <Field type='text' placeholder='Name' name='name'/>
-                    </div>
                     <div className='fieldDiv' >
                         {/* {touched.email && errors.email && <p className="error">{errors.email}</p>} */}
                         <Field type='email' placeholder='Email' name='username'/>
@@ -44,7 +49,7 @@ function Login() {
                     {/* {touched.password && errors.password && <p className="error">{errors.password}</p>} */}
                     <Field type='password' placeholder='Password' name='password'/>
                 </div>
-                <Field type='submit' value='Signup' name='Submit'/>
+                <Field type='submit' value='Signup' name='Submit' />
             </Form>
                 }
             </div>
@@ -64,17 +69,37 @@ const LoginForm = withFormik({
     user(users){
         return users
     },
-    handleSubmit(values){
+    handleSubmit(values){        
+        if(values.name.length !== 0){
+            console.log(values.name, 'register')
+            this.register(values)
+        } else{
+            this.login(values)
+        }
+        this.getUser();
+    },
+
+    login({ password, username }){
+        Axios.post('https://trip-split-api.herokuapp.com/api/users/login', 
+            {
+                password, 
+                username
+            } 
+            ).then(res=>{
+            const token = res.data.token;
+            console.log(res)
+            localStorage.setItem('token', token);
+            this.user(res.config)
+        })
+        .catch(err=>console.log(err))
+    },
+    register(values){
         console.log(values)
-        Axios.post('https://trip-split-api.herokuapp.com/api/users/login', values)
-            .then(res=>{
-                const token = res.data.token;
-                console.log(res)
-                localStorage.setItem('token', token);
-                this.user(res.config)
-            })
-            .catch(err=>console.log(err))
-            this.getUser();
+        Axios.post('https://trip-split-api.herokuapp.com/api/users/register', values)
+        .then(res=>{
+            console.log(res)
+        })
+        .catch(err=>console.log(err))
     },
     getUser(){
         Axios.get('https://trip-split-api.herokuapp.com/api/users/1')
