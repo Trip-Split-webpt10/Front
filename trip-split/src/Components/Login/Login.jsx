@@ -94,7 +94,20 @@ const LongInStyles = styled.div`
     margin: 50px auto 0 auto;
     padding: 10px;
     ul{
-        
+        display: flex;
+        width: 100%;
+        padding: 15px;
+
+    }
+    li{
+        margin-right: 35px;
+        font-size: 2rem;
+        font-weight: bolder;
+        padding: 5px;
+    } 
+    li:hover{
+        text-underline-position: below;
+        border-bottom: 3px solid lightgrey
     }
     .login{
         height: 100vh;
