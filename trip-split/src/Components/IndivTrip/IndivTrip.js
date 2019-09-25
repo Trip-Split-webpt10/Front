@@ -30,7 +30,13 @@ function IndivTrip(trip) {
     }
 
     function costPerPerson(amountOfUsers){
-        return calc() / amountOfUsers;
+        let total = calc() / amountOfUsers;
+        if (!total){
+            return "No Expenses Listed"
+        }
+        else{
+            return total;
+        }
     }
     return (
         <div className="IndivContainer">
