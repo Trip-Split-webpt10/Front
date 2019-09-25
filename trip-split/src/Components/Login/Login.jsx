@@ -11,7 +11,10 @@ function Login() {
 
         <LongInStyles>
             <div className='login'>
-
+                <ul>
+                    <li>Login</li>
+                    <li>Sing Up</li>
+                </ul>
                 { isLogin ? 
                     <Form>
                     <div className='fieldDiv'>
@@ -90,6 +93,9 @@ const LongInStyles = styled.div`
     width: 40%;
     margin: 50px auto 0 auto;
     padding: 10px;
+    ul{
+        
+    }
     .login{
         height: 100vh;
         display: flex;
@@ -99,7 +105,7 @@ const LongInStyles = styled.div`
     }
     form{
         width: 100%;
-        margin: 25% auto ;
+        /* margin: 25% auto ; */
     }
     input{
         width: 80%;
