@@ -6,6 +6,7 @@ import Trips from './Components/Trips/Trips'
 import AboutUs from './Components/AboutUs/AboutUs'
 import Jumbotron from './Components/HomePage/Jumbotron/Jumbotron'
 import {BrowserRouter as Router,Route,Link} from 'react-router-dom';
+import IndivTrip from './Components/IndivTrip/IndivTrip';
 
 function App() {
   return (
@@ -44,6 +45,17 @@ function App() {
 
           return (
             <AboutUs
+              {...props}
+            />)
+        }}
+      />
+      <Route 
+        path = '/trips/:id'
+        exact
+        render= {props =>{
+
+          return (
+            <IndivTrip
               {...props}
             />)
         }}

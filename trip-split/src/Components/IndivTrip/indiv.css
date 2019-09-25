@@ -1,0 +1,40 @@
+.IndivContainer{
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 8%;
+}
+
+.HeaderIndiv{
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.FlexDiv{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.UserCost{
+    display: flex;
+    flex-flow: column nowrap;
+    width: 50%;
+    text-align: center
+}
+.Form{
+    width: 50%;
+}
+
+.UserCostHeader{
+    margin-top: 5%;
+}
+.UsersList{
+    margin-top: 5%;
+}
+
+.tripStats{
+    margin-top: 5%;
+    font-weight: bold;
+}
