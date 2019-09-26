@@ -14,13 +14,17 @@ function TripList(props ) {
             {props.allTrips.map(trip=>{
                 return (
                     <TripCardStyles onClick={ (e)=>{
-                        handleClick(e)
+                        
                         props.getSingleTrip(trip.id)
                         }} 
                         key={ trip.id }>
                         <img src ={image} atl ={trip.destination} />
                         <h2>{trip.destination}</h2>
                         <h4>{trip.start_date}</h4>
+                        <p
+                            onClick={handleClick} >
+                            Add an expense
+                        </p>
                     </TripCardStyles>
                 )
 
@@ -38,4 +42,12 @@ const TripCardStyles = styled.div`
     text-align: center;
     line-height: 1.5rem;
     font-weight: bold;
+    p{
+        padding: 5px;
+    }
+    p:hover{
+        background: lightpink;
+        transition-duration: .8s;
+        border-radius: 5px;
+    }
  `;
