@@ -29,13 +29,10 @@ const ButtonNewFriend = styled.button`
     font-size: 1rem;
 `;
 
-handleChange = value => {
-    // this is going to call setFieldValue and manually update values.topcis
-    this.props.onChange("option", value);
-  };
   
-const AddUserForm = ({ errors, touched }) => {
+const AddUserForm = ({ errors, touched, handleChange, handleBlur, values}) => {
     const [Usernames, SetUsernames] = useState([]);
+    const [select, updateSelect] = useState('')
     useEffect(() => {
         const url = `https://trip-split-api.herokuapp.com/api/users`
         Axios.get(url)
@@ -46,12 +43,13 @@ const AddUserForm = ({ errors, touched }) => {
                 console.log(err)
             })
     }, [])
+
     return (
         <>
             <Header>Add Trip Members</Header>
             <Form>
                 <FormDisplayFlex>
-                    <select id='fieldstyle' name="username" onChange={setFieldValue} onBlur={setFieldTouched}>
+                    <select id='fieldstyle' name="username" value={values.username} onChange={handleChange} onBlur={handleBlur}>
                         {Usernames.map((x,index)=>{
                             return <option value={x.username} key={index} label={x.username} />
                         })}
@@ -64,9 +62,9 @@ const AddUserForm = ({ errors, touched }) => {
 }
 
 export default withFormik({
-    mapPropsToValues: ({username}) => {
+    mapPropsToValues: () => {
         return {
-            username: username || ''
+            username: ({username: ''})
         }
     },
     // validationSchema: yup.object().shape({
@@ -79,8 +77,7 @@ export default withFormik({
                 return MySwal.fire({type:'success', title:'User Added Successfully',text:'Good Job!'})
             })
             .catch((error) => {
-                // return MySwal.fire({type:'error', title:error.response,text:'Try Again!'})
-                console.log(error.response)
+                return MySwal.fire({type:'error', title:error.response,text:'Try Again!'})
             })
     }
 })(AddUserForm)
