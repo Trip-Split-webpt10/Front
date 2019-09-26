@@ -7,20 +7,20 @@ function SuggestionCards() {
     return (
         <>
             <ContainerStyles>   
-                { Destination.map( places => <Card key={places.name}>
-                    <Image  src ={`${places.img}`}/>
+                { Destination.map( places => <Card key={ places.name }>
+                    <Image  src ={ `${ places.img }` }/>
                     <Card.Content>
                         <Card.Header>
-                        {places.name}
+                        { places.name }
                         </Card.Header>
                         <Card.Description>
-                            {places.description}
+                            { places.description }
                         </Card.Description>
                     </Card.Content>
                 </Card>) }
             </ContainerStyles>
         </>
-    )
+    );
 }
 
 export default SuggestionCards

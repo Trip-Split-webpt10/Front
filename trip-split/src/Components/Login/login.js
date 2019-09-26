@@ -9,6 +9,7 @@ export default function login({password, username, history}){
         } 
         ).then(res=>{
         // const token = res.data.token;
+            
         console.log(res)
         // localStorage.setItem('token', token);
         // this.user(res.config)
