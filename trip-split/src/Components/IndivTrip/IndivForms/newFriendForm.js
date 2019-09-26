@@ -32,7 +32,6 @@ const ButtonNewFriend = styled.button`
   
 const AddUserForm = ({ errors, touched, handleChange, handleBlur, values}) => {
     const [Usernames, SetUsernames] = useState([]);
-    const [select, updateSelect] = useState('')
     useEffect(() => {
         const url = `https://trip-split-api.herokuapp.com/api/users`
         Axios.get(url)
@@ -67,17 +66,18 @@ export default withFormik({
             username: ({username: ''})
         }
     },
-    // validationSchema: yup.object().shape({
-    //     username: yup.string().required('Username is a required field!')
-    // }),
+    validationSchema: yup.object().shape({
+        username: yup.string().required('Username is a required field!')
+    }),
     handleSubmit: (values, trip) => {
         console.log(values)
-        Axios.post(`https://trip-split-api.herokuapp.com/api/trips/${trip.props.trip.match.params.id}/name`, values)
+        Axios.post(`https://trip-split-api.herokuapp.com/api/trips/${trip.props.trip.match.params.id}/users`, values)
             .then(() => {
                 return MySwal.fire({type:'success', title:'User Added Successfully',text:'Good Job!'})
             })
             .catch((error) => {
-                return MySwal.fire({type:'error', title:error.response,text:'Try Again!'})
+                // return MySwal.fire({type:'error', title:'There was an error adding the user!', text: 'Try again!'})
+                console.log(error.response)
             })
     }
 })(AddUserForm)
