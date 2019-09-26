@@ -31,11 +31,11 @@ function Trips(props) {
     }, []);
     
     function getSingleTrip(id){
+        setTripId(id);
         const url = `https://trip-split-api.herokuapp.com/api/trips/${id}/expenses`
         axios.get(url)
             .then(res=>{
-                console.log(res)
-                console.log(id)
+                console.log(res.data)
                 setSingleTrip(res.data);
             })
             .catch(err=>console.log)
@@ -56,6 +56,7 @@ function Trips(props) {
             activeModal ={ activeModal }
             toggleModalClass = { toggleModalClass }
             singleTrip ={ singleTrip }
+            tripId = {tripId}
         />
         </>
     )

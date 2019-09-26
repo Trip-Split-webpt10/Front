@@ -1,18 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import image from './images/placeholder12.png'
-import TripCard from './TripCard';
 
 function TripList(props ) {
     function handleClick(e){
         e.preventDefault();
         props.toggleModalClass();
+
     }   
     return (
         <>
             {props.allTrips.map(trip=>{
                 return (
                     <TripCardStyles onClick={ (e)=>{
+                        console.log(trip)
                         props.getSingleTrip(trip.id);
                         }} 
                         key={ trip.id } 
@@ -21,7 +22,9 @@ function TripList(props ) {
                         <h2>{trip.destination}</h2>
                         <h4>{trip.start_date}</h4>
                         <p
-                            onClick={handleClick}
+                            onClick={ e =>{
+                                handleClick(e);
+                            }}
 
                             >
                             Add an expense

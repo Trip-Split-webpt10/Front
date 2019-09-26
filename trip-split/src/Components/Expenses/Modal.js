@@ -1,12 +1,13 @@
 import React, { useEffect, useState} from 'react';
 import styled from 'styled-components';
 import modalHeader from'./../Trips/images/modalHeader.jpeg';
+import Axios from 'axios';
 
-function Modal() {
+function Modal(props) {
     const [expense, setExpense] = useState({
         name: '',
         price:'',
-        id: null
+        trip_id: props.tripId,
     })
     useEffect(() => {
     }, []);
@@ -14,12 +15,22 @@ function Modal() {
  function handleChange(e){
      setExpense({
          ...expense, 
-         [e.target.name]: e.target.value
+        [e.target.name]: e.target.value,
+        trip_id: props.tripId
         })
  }
  function handleSubmit(e){
-     e.preventDefault();
-     console.log(expense)
+    e.preventDefault();
+     Axios.post("https://trip-split-api.herokuapp.com/api/expenses", expense)
+        .then(res => { 
+            console.log(res)
+        })
+        .catch(err => { 
+            console.log(err)
+        })
+        setExpense({...expense,  
+            name: '',
+            price:'',})
  }
     return (
         <ModalStyles>
@@ -37,6 +48,8 @@ function Modal() {
 
 export default Modal;
 
+
+//styles
 const ModalStyles = styled.div`
     height: 700px;
     width: 400px;
