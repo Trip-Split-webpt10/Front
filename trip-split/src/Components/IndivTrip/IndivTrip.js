@@ -6,7 +6,7 @@ import Trips from '../Trips/Trips';
 
 
 
-function IndivTrip(trip) {
+function IndivTrip(trip, props) {
     const [Trip, setTrips] = useState([])
     const [Users, setUsers] = useState([]);
     const [Cost, setCost] = useState([]);
@@ -21,7 +21,7 @@ function IndivTrip(trip) {
             .catch(err => {
                 console.log(err)
             })
-    }, [])
+    }, [setUsers])
 
     function calc(){
         const totalCost = Cost.map((x)=>{
@@ -46,7 +46,7 @@ function IndivTrip(trip) {
             </div>
             <div className="FlexDiv">
                 <div className="Form">
-                    <AddUserForm trip={trip}></AddUserForm>
+                    <AddUserForm trip={trip} Users={Users}></AddUserForm>
                 </div>
                 <div className="UserCost">
                     <div className="UserCostHeader">Total People: {Users.length}</div>
