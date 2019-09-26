@@ -30,6 +30,8 @@ const HeaderStyles = styled.div`
     width : 100%;
     margin: 0;
     position: fixed;
+    overflow: hidden;
+    z-index: 1;
     top: 0;
     left: 0px;
     background-color: white;

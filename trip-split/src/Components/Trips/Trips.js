@@ -14,7 +14,6 @@ function Trips(props) {
     const [tripId, setTripId ] = useState(null);
 
     const toggleModalClass = ()=>{
-        console.log('hi')
         let cssProperties = (activeModal === 'hidden') ? 'show' : 'hidden';
         setActiveModal(cssProperties)
        
@@ -23,19 +22,20 @@ function Trips(props) {
         const url = 'https://trip-split-api.herokuapp.com/api/trips'
         axios.get(url)
             .then(res=>{
-                console.log(res)
                 setALlTrips(res.data);
             })
             .catch(err=>console.log)
     }   
     useEffect(()=>{
         getAllTrips() 
-    }, [tripId]);
+    }, []);
     
     function getSingleTrip(id){
         const url = `https://trip-split-api.herokuapp.com/api/trips/${id}/expenses`
         axios.get(url)
             .then(res=>{
+                console.log(res)
+                console.log(id)
                 setSingleTrip(res.data);
             })
             .catch(err=>console.log)
@@ -74,4 +74,7 @@ const TripsStyles = styled.div`
     justify-content: space-evenly;
     align-content: center; 
     align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    background: #ffffff;
 `;

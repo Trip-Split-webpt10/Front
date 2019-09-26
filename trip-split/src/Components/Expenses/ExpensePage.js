@@ -7,7 +7,9 @@ function ExpensePage(props) {
     return (
         <ExpensePageStyles className ={`${props.activeModal}`} >
             <h1 onClick={props.toggleModalClass}>Close</h1>
-            <Modal />
+            <Modal 
+            
+            />
         </ExpensePageStyles>
     )
 }
