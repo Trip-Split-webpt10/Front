@@ -13,7 +13,6 @@ function TripList(props ) {
             {props.allTrips.map(trip=>{
                 return (
                     <TripCardStyles onClick={ (e)=>{
-                        console.log(trip)
                         props.getSingleTrip(trip.id);
                         }} 
                         key={ trip.id } 

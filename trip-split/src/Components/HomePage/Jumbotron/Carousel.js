@@ -13,7 +13,6 @@ function Carousel(props) {
         return () => clearInterval(interval)
       }, [index]);
     
-    console.log(index)
     const imgStyles = {
         height: '700px',
         width: '90%',

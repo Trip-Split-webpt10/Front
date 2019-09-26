@@ -90,4 +90,9 @@ const ModalStyles = styled.div`
         outline: none;
         font-family: 'Nunito', sans-serif;
     }
+    h2{
+        font-size: 1.6rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
 `;

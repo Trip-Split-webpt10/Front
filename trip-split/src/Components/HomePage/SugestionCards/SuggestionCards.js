@@ -8,7 +8,6 @@ function SuggestionCards() {
         <>
             <ContainerStyles>   
                 { Destination.map( places => <Card key={places.name}>
-                    {console.log(places)}
                     <Image  src ={`${places.img}`}/>
                     <Card.Content>
                         <Card.Header>

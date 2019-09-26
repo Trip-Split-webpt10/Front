@@ -17,7 +17,6 @@ function Trips(props) {
         let cssProperties = (activeModal === 'hidden') ? 'show' : 'hidden';
         setActiveModal(cssProperties);
     }
-    console.log(props)
     function getAllTrips (){
         const url = 'https://trip-split-api.herokuapp.com/api/trips'
         axios.get(url)
@@ -35,7 +34,6 @@ function Trips(props) {
         const url = `https://trip-split-api.herokuapp.com/api/trips/${id}/expenses`
         axios.get(url)
             .then(res=>{
-                console.log(res.data)
                 setSingleTrip(res.data);
             })
             .catch(err=>console.log)

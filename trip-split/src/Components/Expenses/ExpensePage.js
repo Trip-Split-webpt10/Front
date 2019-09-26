@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Modal from './Modal';
 
 function ExpensePage(props) {
-    console.log(props)
     return (
         <ExpensePageStyles className ={`${props.activeModal}`} >
             <h1 onClick={props.toggleModalClass}>Close</h1>
