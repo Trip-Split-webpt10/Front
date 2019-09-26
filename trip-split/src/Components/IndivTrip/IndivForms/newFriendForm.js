@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { withFormik, Form, Field } from 'formik';
+import { withFormik, Form, Select } from 'formik';
 import * as yup from 'yup';
 import Axios from 'axios';
 import styled from 'styled-components';
@@ -29,16 +29,33 @@ const ButtonNewFriend = styled.button`
     font-size: 1rem;
 `;
 
-
-const AddUserForm = ({ errors, touched, Users}) => {
-    console.log(Users)
+handleChange = value => {
+    // this is going to call setFieldValue and manually update values.topcis
+    this.props.onChange("option", value);
+  };
+  
+const AddUserForm = ({ errors, touched }) => {
+    const [Usernames, SetUsernames] = useState([]);
+    useEffect(() => {
+        const url = `https://trip-split-api.herokuapp.com/api/users`
+        Axios.get(url)
+            .then(response => {
+                SetUsernames(response.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }, [])
     return (
         <>
             <Header>Add Trip Members</Header>
             <Form>
                 <FormDisplayFlex>
-                    {touched.users && errors.users && <p className="error">{errors.user}</p>}
-                    <Field type="text" id='fieldstyle' name="users" placeholder="users" />
+                    <select id='fieldstyle' name="username" onChange={setFieldValue} onBlur={setFieldTouched}>
+                        {Usernames.map((x,index)=>{
+                            return <option value={x.username} key={index} label={x.username} />
+                        })}
+                    </select>
                     <ButtonNewFriend type="submit" className="AddFriendButton">Submit</ButtonNewFriend>
                 </FormDisplayFlex>
             </Form>
@@ -47,20 +64,17 @@ const AddUserForm = ({ errors, touched, Users}) => {
 }
 
 export default withFormik({
-    mapPropsToValues: (values) => {
-        let id = values.Users.length + 1;
-        console.log(id)
+    mapPropsToValues: ({username}) => {
         return {
-            user_id: id,
-            users: values.users || ''
+            username: username || ''
         }
     },
-    validationSchema: yup.object().shape({
-        users: yup.string().required('Users is a required field!')
-    }),
+    // validationSchema: yup.object().shape({
+    //     username: yup.string().required('Username is a required field!')
+    // }),
     handleSubmit: (values, trip) => {
         console.log(values)
-        Axios.post(`https://trip-split-api.herokuapp.com/api/trips/${trip.props.trip.match.params.id}/users`, values)
+        Axios.post(`https://trip-split-api.herokuapp.com/api/trips/${trip.props.trip.match.params.id}/name`, values)
             .then(() => {
                 return MySwal.fire({type:'success', title:'User Added Successfully',text:'Good Job!'})
             })

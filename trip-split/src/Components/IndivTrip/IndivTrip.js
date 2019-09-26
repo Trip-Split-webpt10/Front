@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import './indiv.css';
 import AddUserForm from './IndivForms/newFriendForm';
-import Trips from '../Trips/Trips';
 
 
 
-function IndivTrip(trip, props) {
+function IndivTrip(trip) {
     const [Trip, setTrips] = useState([])
     const [Users, setUsers] = useState([]);
     const [Cost, setCost] = useState([]);
