@@ -17,21 +17,22 @@ function Modal(props) {
          ...expense, 
         [e.target.name]: e.target.value,
         trip_id: props.tripId
-        })
+        });
  }
  function handleSubmit(e){
     e.preventDefault();
-     Axios.post("https://trip-split-api.herokuapp.com/api/expenses", expense)
-        .then(res => { 
-            console.log(res)
-        })
-        .catch(err => { 
-            console.log(err)
-        })
-        setExpense({...expense,  
-            name: '',
-            price:'',})
- }
+    //  Axios.post("https://trip-split-api.herokuapp.com/api/expenses", expense)
+    //     .then(res => { 
+    //         console.log(res);
+    //     })
+    //     .catch(err => { 
+    //         console.log(err);
+    //     })
+    //     setExpense({...expense,  
+    //         name: '',
+    //         price:'',});
+         props.toggleModalClass()
+    }
     return (
         <ModalStyles>
            

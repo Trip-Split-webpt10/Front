@@ -15,9 +15,9 @@ function Trips(props) {
 
     const toggleModalClass = ()=>{
         let cssProperties = (activeModal === 'hidden') ? 'show' : 'hidden';
-        setActiveModal(cssProperties)
-       
+        setActiveModal(cssProperties);
     }
+    console.log(props)
     function getAllTrips (){
         const url = 'https://trip-split-api.herokuapp.com/api/trips'
         axios.get(url)
@@ -57,6 +57,7 @@ function Trips(props) {
             toggleModalClass = { toggleModalClass }
             singleTrip ={ singleTrip }
             tripId = {tripId}
+            history = {props.history}
         />
         </>
     )
