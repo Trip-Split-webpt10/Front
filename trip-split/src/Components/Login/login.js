@@ -1,6 +1,7 @@
 import Axios from 'axios';
 
-export default function login({password, username}){
+export default function login({password, username, history}){
+    console.log(history)
     Axios.post('https://trip-split-api.herokuapp.com/api/users/login', 
         {
             password, 

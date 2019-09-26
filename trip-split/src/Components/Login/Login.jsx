@@ -8,7 +8,7 @@ import register  from './register'
 
  
 
-function Login(props) {
+function Login({history}) {
     const [user, setUser] = useState({
         name: '',
         username: '',
@@ -23,7 +23,7 @@ function Login(props) {
 
     const handleSubmit = (e)=>{
         e.preventDefault()
-        isLogin ? login(user) : register(user);
+        isLogin ? login({user, history}) : register(user);
     }
     
     return (
@@ -66,7 +66,8 @@ function Login(props) {
                                 required 
                                 />
                         </div>
-                        <input type='submit' value='Login' name='signup'/>
+                        {/* <input type='submit' value='Login' name='signup'/> */}
+                        <button>Login</button>
                     </form> 
                     :
 
@@ -100,60 +101,14 @@ function Login(props) {
                                 required
                                 />
                         </div>
-                        <input type='submit' value='Signup' name='Submit' />
+                        {/* <input type='submit' value='Signup' name='Submit' /> */}
+                        <button>Signup</button>
                     </form>
                 }
             </div>
         </LongInStyles>
     )
 }
-
-//formik
-
-const LoginForm = withFormik({
-   
-    handleSubmit(values){    
-        if(values.name.length !== 0){
-            console.log(values.name, 'register')
-            this.register(values)
-        } else{
-            this.login(values)
-        }
-        this.getUser();
-    },
-
-    login({ password, username }){
-        Axios.post('https://trip-split-api.herokuapp.com/api/users/login', 
-            {
-                password, 
-                username
-            } 
-            ).then(res=>{
-            const token = res.data.token;
-            // localStorage.setItem('token', token);
-            this.user(res.config)
-        })
-        .catch(err=>console.log(err))
-    },
-    register(values){
-        console.log(values)
-        Axios.post('https://trip-split-api.herokuapp.com/api/users/register', values)
-        .then(res=>{
-            console.log(res)
-        })
-        .catch(err=>console.log(err))
-    },
-    getUser(){
-        Axios.get('https://trip-split-api.herokuapp.com/api/users/1')
-            .then(res=>{
-                console.log(res)
-            })
-            .catch(err=>{
-                console.log(err)
-            })
-        }
-})(Login);
-
 //styles
 const LongInStyles = styled.div`
     margin-top: 50px;
@@ -200,4 +155,4 @@ const LongInStyles = styled.div`
 
 
 
-export default LoginForm;
+export default Login;
