@@ -59,7 +59,8 @@ const ModalStyles = styled.div`
         width: 65%;
         margin: 10px auto 10px auto;
         height: 50px;
-        padding: 10px
+        padding: 10px;
+        font-size: 1.3rem
     }
     input[type='submit']{
         background: pink;
