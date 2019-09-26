@@ -3,10 +3,28 @@ import React,  {useState} from 'react';
 import styled from 'styled-components';
 import {withFormik, Form, Field} from 'formik'
 import Axios from 'axios';
+import login from './login';
+import register  from './register'
+
  
 
-function Login() {
-    const [isLogin, setIsLogin ] = useState(true)
+function Login(props) {
+    const [user, setUser] = useState({
+        name: '',
+        username: '',
+        password: ''
+    })
+
+    const [isLogin, setIsLogin ] = useState(true);
+    
+    const handleChange = (e)=>{
+        setUser({...user, [e.target.name]: e.target.value})
+    }   
+
+    const handleSubmit = (e)=>{
+        e.preventDefault()
+        isLogin ? login(user) : register(user);
+    }
     
     return (
 
@@ -24,33 +42,66 @@ function Login() {
                         Sing Up
                     </li>
                 </ul>
-                { isLogin ? 
-                    <Form>
-                    <div className='fieldDiv' >
-                        {/* {touched.email && errors.email && <p className="error">{errors.email}</p>} */}
-                        <Field type='email' placeholder='Email' name='username'/>
-                    </div>
-                    <div>
-                        {/* {touched.password && errors.password && <p className="error">{errors.password}</p>} */}
-                        <Field type='password' placeholder='Password' name='password'/>
-                    </div>
-                    <Field type='submit' value='Login' name='signup'/>
-                </Form> :
-                <Form>
-                <div className='fieldDiv'>
-                    {/* {touched.name && errors.name && <p className="error">{errors.name}</p>} */}
-                    <Field type='text' placeholder='Name' name='name'/>
-                </div>
-                <div className='fieldDiv' >
-                    {/* {touched.email && errors.email && <p className="error">{errors.email}</p>} */}
-                    <Field type='email' placeholder='Email' name='username'/>
-                </div>
-                <div>
-                    {/* {touched.password && errors.password && <p className="error">{errors.password}</p>} */}
-                    <Field type='password' placeholder='Password' name='password'/>
-                </div>
-                <Field type='submit' value='Signup' name='Submit' />
-            </Form>
+                { isLogin 
+                    ? 
+
+                    <form onSubmit={handleSubmit}>
+                        <div className='fieldDiv' >
+                            <input
+                                type='email'
+                                placeholder='Email' 
+                                name='username' 
+                                value = {user.username} 
+                                onChange={handleChange}
+                                required
+                                />
+                        </div>
+                        <div>
+                            <input 
+                                type='password'
+                                placeholder='Password' 
+                                name='password' 
+                                value = {user.password} 
+                                onChange={handleChange}
+                                required 
+                                />
+                        </div>
+                        <input type='submit' value='Login' name='signup'/>
+                    </form> 
+                    :
+
+                    <form onSubmit={handleSubmit} >
+                        <div className='fieldDiv'>
+                            <input 
+                                type='text'
+                                placeholder='Name' 
+                                name='name' 
+                                value ={user.name} 
+                                onChange={handleChange}
+                                required
+                                />
+                        </div>
+                        <div className='fieldDiv' >
+                            <input 
+                                type='email' 
+                                placeholder='Email' 
+                                name='username' 
+                                value = {user.username} 
+                                onChange={handleChange}
+                                required/>
+                        </div>
+                        <div>
+                            <input 
+                                type='password' 
+                                placeholder='Password' 
+                                name='password' 
+                                value = {user.password} 
+                                onChange={handleChange}
+                                required
+                                />
+                        </div>
+                        <input type='submit' value='Signup' name='Submit' />
+                    </form>
                 }
             </div>
         </LongInStyles>
@@ -58,18 +109,10 @@ function Login() {
 }
 
 //formik
+
 const LoginForm = withFormik({
-    mapPropsToValues({name, username, password}){
-      return{
-            name: name || '',
-            username: username || '',
-            password: password || '',
-      }
-    },
-    user(users){
-        return users
-    },
-    handleSubmit(values){        
+   
+    handleSubmit(values){    
         if(values.name.length !== 0){
             console.log(values.name, 'register')
             this.register(values)
@@ -87,8 +130,7 @@ const LoginForm = withFormik({
             } 
             ).then(res=>{
             const token = res.data.token;
-            console.log(res)
-            localStorage.setItem('token', token);
+            // localStorage.setItem('token', token);
             this.user(res.config)
         })
         .catch(err=>console.log(err))
