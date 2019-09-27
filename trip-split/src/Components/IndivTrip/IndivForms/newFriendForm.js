@@ -29,7 +29,7 @@ const ButtonNewFriend = styled.button`
 `;
 
   
-const AddUserForm = ({ errors, touched, handleChange, handleBlur, values}) => {
+const AddUserForm = ({ errors, touched, handleChange, handleBlur, values, setUsers}) => {
     const [Usernames, SetUsernames] = useState([]);
     useEffect(() => {
         const url = `https://trip-split-api.herokuapp.com/api/users`
@@ -70,7 +70,7 @@ export default withFormik({
     validationSchema: yup.object().shape({
         username: yup.string().required('Username is a required field!')
     }),
-    handleSubmit: (values, trip) => {
+    handleSubmit: (values, trip, setUsers) => {
         Axios.post(`https://trip-split-api.herokuapp.com/api/trips/${trip.props.trip.match.params.id}/users`, values)
             .then(() => {
                     return MySwal.fire({type:'success', title:'User Added Successfully',text:'Good Job!'})

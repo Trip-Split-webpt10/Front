@@ -1,5 +1,5 @@
 import React from 'react'
-import {Card, Icon, Image,  } from 'semantic-ui-react'
+import {Card, Icon, Image  } from 'semantic-ui-react'
 import Destination from '../SugetionData';
 import styled from 'styled-components';
 

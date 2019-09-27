@@ -2,17 +2,17 @@ const Destination=[
     {
         'name': 'Sydney, Australia',
         'description' : 'Beaches, bushlands or world famous landmarks. Sydney is the gateway to an Australian State that has it all.',
-        'img' : 'https://tpc.googlesyndication.com/pagead/imgad?id=CICAgKDH4cv4CxABGAEyCCmaKYXfYPkm'
+        'img' : 'https://parade.com/wp-content/uploads/2018/07/sydney-opera-house-australia-ftr.jpg'
     },
     {
         'name': 'Los Angeles',
         'description' : 'Beverly Hills featuring signage',
-        'img' : 'https://thumbnails.expedia.com/Pwc0DmEat9R3zhgZGKvhv_Y3FUE=/640x360/a.travel-assets.com/findyours-php/viewfinder/images/res70/20000/20520-Los-Angeles.jpg'
+        'img' : 'https://www.oxy.edu/sites/default/files/styles/banner_image/public/page/banner-images/los-angeles_main_1440x800.jpg?itok=GiOVS9-4'
     },
     {
         'name': 'Mexico City ',
         'description' : 'A buzzing metropolis with acclaimed cuisine, striking architecture and fascinating museums',
-        'img' : 'https://tpc.googlesyndication.com/pagead/imgad?id=CICAgKD7yvXY7gEQARgBMgjoBP6L66kHwg'
+        'img' : 'https://specials-images.forbesimg.com/imageserve/1064661588/960x0.jpg?fit=scale'
     },
    
    
@@ -24,7 +24,7 @@ const Destination=[
     {
         'name': 'Los Cabos',
         'description' : 'A magical place of crystalline waters, unparalleled beauty and endless adventure.',
-        'img' : 'https://tpc.googlesyndication.com/pagead/imgad?id=CICAgKCHl7zdpgEQARgBMgi-NApNGUXcjQ'
+        'img' : 'https://www.riu.com/fcs_images/guia-destinos/guia_MX_13790_2x1.jpg'
     },
      {
         'name': 'Seattle',
