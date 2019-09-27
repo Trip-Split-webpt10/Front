@@ -1,64 +1,51 @@
-import React from 'react';
-import Header from './Components/Header/Header'
-import './App.css';
-import CreateATrip from './Components/CreateATrip/CreateTrip';
-import Trips from './Components/Trips/Trips'
-import AboutUs from './Components/AboutUs/AboutUs'
-import Jumbotron from './Components/HomePage/Jumbotron/Jumbotron'
-import {BrowserRouter as Router,Route,Link} from 'react-router-dom';
-import Login from './Components/Login/Login';
-// import IndivTrip from './Components/IndivTrip/IndivTrip';
 
+import React from "react";
+import Header from "./Components/Header/Header";
+import "./App.css";
+import CreateATrip from "./Components/CreateATrip/CreateTrip";
+import Trips from "./Components/Trips/Trips";
+import AboutUs from "./Components/AboutUs/AboutUs";
+import Jumbotron from "./Components/HomePage/Jumbotron/Jumbotron";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Login from "./Components/Login/Login.jsx";
 
 function App() {
   return (
     <>
       <Header />
-      <Route 
-        path = '/'
+      <Route
+        path="/"
         exact
-        render= {props =>{
-          return <Jumbotron />
+        render={props => {
+          return <Jumbotron />;
         }}
       />
-      <Route 
-        path = '/createtrip'
+      <Route
+        path="/createtrip"
         exact
-        render= {props =>{
-          return <CreateATrip />
+        render={props => {
+          return <CreateATrip />;
         }}
       />
-      <Route 
-        path = '/trips'
+      <Route
+        path="/trips"
         exact
-        render= {props =>{
-
-          return (
-            <Trips 
-              {...props}
-            />)
+        render={props => {
+          return <Trips {...props} />;
         }}
       />
-      <Route 
-        path = '/aboutus'
+      <Route
+        path="/aboutus"
         exact
-        render= {props =>{
-
-          return (
-            <AboutUs
-              {...props}
-            />)
+        render={props => {
+          return <AboutUs {...props} />;
         }}
       />
-      <Route 
-        path = '/login'
+      <Route
+        path="/login"
         exact
-        render= {props =>{
-
-          return (
-            <Login
-              {...props}
-            />)
+        render={props => {
+          return <Login {...props} />;
         }}
       />
     </>
