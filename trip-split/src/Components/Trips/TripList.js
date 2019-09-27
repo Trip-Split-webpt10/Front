@@ -2,6 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import image from './images/placeholder12.png'
 import TripCard from './TripCard';
+<<<<<<< Updated upstream
+=======
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
+>>>>>>> Stashed changes
 
 function TripList(props ) {
     function handleClick(e){
