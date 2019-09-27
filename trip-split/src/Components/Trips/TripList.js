@@ -37,28 +37,28 @@ function TripList(props ) {
     )
 }
 
-export default TripList
+export default TripList;
 
 const TripCardStyles = styled.div`
-    padding: 15px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    margin: 20px 0px;
-    text-align: center;
-    line-height: 1.5rem;
-    font-weight: bold;
-    p{
-        padding: 5px;
-        cursor: pointer;
-    }
-    p:hover{
-        background: lightpink;
-        transition-duration: .8s;
-        border-radius: 5px;
-    }
-    .plus{
-        border: 2px solid #000000;
-        border-radius:  50%;
-        margin-right: 10px;
-        padding: 5px;
-    }
- `;
+  padding: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  margin: 20px 0px;
+  text-align: center;
+  line-height: 1.5rem;
+  font-weight: bold;
+  p {
+    padding: 5px;
+    cursor: pointer;
+  }
+  p:hover {
+    background: lightpink;
+    transition-duration: 0.8s;
+    border-radius: 5px;
+  }
+  .plus {
+    border: 2px solid #000000;
+    border-radius: 50%;
+    margin-right: 10px;
+    padding: 5px;
+  }
+`;

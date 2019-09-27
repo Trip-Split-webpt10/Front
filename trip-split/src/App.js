@@ -13,52 +13,39 @@ function App() {
   return (
     <>
       <Header />
-      <Route 
-        path = '/'
+      <Route
+        path="/"
         exact
-        render= {props =>{
-          return <Jumbotron />
+        render={props => {
+          return <Jumbotron />;
         }}
       />
-      <Route 
-        path = '/createtrip'
+      <Route
+        path="/createtrip"
         exact
-        render= {props =>{
-
-          return <CreateATrip />
+        render={props => {
+          return <CreateATrip />;
         }}
       />
-      <Route 
-        path = '/trips'
+      <Route
+        path="/trips"
         exact
-        render= {props =>{
-
-          return (
-            <Trips 
-              {...props}
-            />)
+        render={props => {
+          return <Trips {...props} />;
         }}
       />
-      <Route 
-        path = '/aboutus'
+      <Route
+        path="/aboutus"
         exact
-        render= {props =>{
-
-          return (
-            <AboutUs
-              {...props}
-            />)
+        render={props => {
+          return <AboutUs {...props} />;
         }}
       />
-      <Route 
-        path = '/login'
+      <Route
+        path="/login"
         exact
-        render= {props =>{
-
-          return (
-            <Login
-              {...props}
-            />)
+        render={props => {
+          return <Login {...props} />;
         }}
       />
       <Route 
