@@ -4,7 +4,7 @@ import CreateATripForm from './CreateTripForm';
 
 
 function CreateATrip() {
-    function hideBackground() {
+    function hideBackground(){
         let backgroundgif = document.getElementById('BackgroundHide')
         backgroundgif.style.display = 'none';
         let tripform = document.getElementById('TripForm');
@@ -12,12 +12,12 @@ function CreateATrip() {
     };
     return (
         <>
-            <div id="BackgroundHide" className="backgroundgif">
-                <button onClick={hideBackground}>Split A Trip</button>
-            </div>
-            <div id="TripForm">
-                <CreateATripForm />
-            </div>
+        <div id="BackgroundHide" className="backgroundgif">
+        <button onClick={hideBackground}>Split A Trip</button>
+        </div>
+        <div id="TripForm">
+        <CreateATripForm/>
+        </div>
         </>
     );
 }
