@@ -20,13 +20,13 @@ function IndivTrip(trip) {
             .catch(err => {
                 console.log(err)
             })
-    }, [setUsers])
+    },[setUsers])
 
     function calc() {
         const totalCost = Cost.map((x) => {
             return x.price;
         })
-        return totalCost.reduce((a, b) => a + b, 0);
+        return "$"+totalCost.reduce((a, b) => a + b, 0);
     }
 
     function costPerPerson(amountOfUsers) {
@@ -35,9 +35,14 @@ function IndivTrip(trip) {
             return "No Expenses Listed"
         }
         else {
-            return Math.floor(total);
+            return "$" + Math.floor(total);
         }
     }
+
+    const addToSavedList = newUser => {
+        setUsers([...Users, newUser]);
+      };
+
     return (
         <div className="IndivContainer">
             <div className="HeaderIndiv">
@@ -45,7 +50,7 @@ function IndivTrip(trip) {
             </div>
             <div className="FlexDiv">
                 <div className="Form">
-                    <AddUserForm trip={trip} Users={Users} setUsers={setUsers}></AddUserForm>
+                    <AddUserForm trip={trip} Users={Users} addToSavedList={addToSavedList}></AddUserForm>
                 </div>
                 <hr></hr>
                 <div className="UserCost">
@@ -56,8 +61,8 @@ function IndivTrip(trip) {
                         })}
                     </div>
                     <div className="UserFlex2">
-                        <div className="calc"><span>Total Cost:</span> ${calc()}</div>
-                        <div className="calc"><span>Cost Per Person:</span> ${costPerPerson(Users.length)}</div>
+                        <div className="calc"><span>Total Cost:</span> {calc()}</div>
+                        <div className="calc"><span>Cost Per Person:</span> {costPerPerson(Users.length)}</div>
                     </div>
                 </div>
                 <div>

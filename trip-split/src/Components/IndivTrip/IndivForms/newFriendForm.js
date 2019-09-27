@@ -29,7 +29,7 @@ const ButtonNewFriend = styled.button`
 `;
 
   
-const AddUserForm = ({ errors, touched, handleChange, handleBlur, values, setUsers}) => {
+const AddUserForm = ({ errors, touched, handleChange, handleBlur, values, addToSavedList}) => {
     const [Usernames, SetUsernames] = useState([]);
     useEffect(() => {
         const url = `https://trip-split-api.herokuapp.com/api/users`
@@ -42,6 +42,9 @@ const AddUserForm = ({ errors, touched, handleChange, handleBlur, values, setUse
             })
     }, [])
 
+    const saveUser = () => {
+        addToSavedList(values.username)
+      }
     return (
         <>
             <Header>Add Trip Members</Header>
@@ -54,7 +57,7 @@ const AddUserForm = ({ errors, touched, handleChange, handleBlur, values, setUse
                             return <option className="dropDown" value={x.username} key={index} label={x.username} />
                         })}
                     </select>
-                    <ButtonNewFriend type="submit" className="AddFriendButton">Submit</ButtonNewFriend>
+                    <ButtonNewFriend type="submit" onClick={saveUser} className="AddFriendButton">Submit</ButtonNewFriend>
                 </FormDisplayFlex>
             </Form>
         </>
@@ -70,7 +73,7 @@ export default withFormik({
     validationSchema: yup.object().shape({
         username: yup.string().required('Username is a required field!')
     }),
-    handleSubmit: (values, trip, setUsers) => {
+    handleSubmit: (values, trip) => {
         Axios.post(`https://trip-split-api.herokuapp.com/api/trips/${trip.props.trip.match.params.id}/users`, values)
             .then(() => {
                     return MySwal.fire({type:'success', title:'User Added Successfully',text:'Good Job!'})
