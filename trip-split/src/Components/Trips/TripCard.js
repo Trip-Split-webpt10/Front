@@ -1,27 +1,33 @@
- import React from 'react';
- import styled from 'styled-components';
- import image from './images/placeholder12.png'
+//  import React from 'react';
+//  import styled from 'styled-components';
+//  import image from './images/placeholder12.png'
 
 
  
- function TripCard({props, trip}) {
-     return (
-         <TripCardStyles>
-             <img src ={image} atl ={trip.destination} />
-             <h2>{trip.destination}</h2>
-             <h4>{trip.start_date}</h4>
-         </TripCardStyles>
-     )
- }
+//  function  TripCard(props) {
+
+//      return (
+//          <TripCardStyles onClick={ (e)=>{
+//                 props.handleClick(e)
+//                 props.getSingleTrip(props.trip.id)
+//              }}
+//              >
+//              <img src ={image} atl ={props.trip.destination} />
+//              <h2>{props.trip.destination}</h2>
+//              <h4>{props.trip.start_date}</h4>
+//              <p>Add expense</p>
+//          </TripCardStyles>
+//      )
+//  }
  
- export default TripCard
+//  export default TripCard
  
 
- const TripCardStyles = styled.div`
-    padding: 15px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    margin: 20px 0px;
-    text-align: center;
-    line-height: 1.5rem;
-    font-weight: bold;
- `;
+//  const TripCardStyles = styled.div`
+//     padding: 15px;
+//     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+//     margin: 20px 0px;
+//     text-align: center;
+//     line-height: 1.5rem;
+//     font-weight: bold;
+//  `;
