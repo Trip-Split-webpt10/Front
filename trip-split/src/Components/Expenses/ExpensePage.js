@@ -4,8 +4,7 @@ import Modal from './Modal';
 
 function ExpensePage(props) {
     return (
-        <ExpensePageStyles className ={`${props.activeModal}`} >
-            <h1 onClick={props.toggleModalClass}>Close</h1>
+        <ExpensePageStyles className ={`${props.activeModal}`} >=
             <Modal 
             tripId = { props.tripId }
             history = { props.history }
@@ -25,14 +24,7 @@ const ExpensePageStyles = styled.div`
     height: 100%;
     overflow: hidden;
     background-color: rgba(0, 0, 0, 0.4);
-    h1{
-        float: right;
-        cursor: pointer;
-        color: #000000;
-        font-weight: bolder;
-        font-size: 1.5rem;
-        margin-right: 15px;
-        }
+
     &.show{
         display: block;
     }
