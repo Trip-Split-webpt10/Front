@@ -1,37 +1,40 @@
-import React from "react";
-import styled from "styled-components";
-import image from "./images/placeholder12.png";
+import React from 'react';
+import styled from 'styled-components';
+import image from './images/placeholder12.png'
+import {Link} from 'react-router-dom';
 
-function TripList(props) {
-  function handleClick(e) {
-    e.preventDefault();
-    props.toggleModalClass();
-  }
-  return (
-    <>
-      {props.allTrips.map(trip => {
-        return (
-          <TripCardStyles
-            onClick={e => {
-              props.getSingleTrip(trip.id);
-            }}
-            key={trip.id}
-          >
-            <img src={image} atl={trip.destination} />
-            <h2> {trip.destination} </h2>
-            <h4> {trip.start_date} </h4>
-            <p
-              onClick={e => {
-                handleClick(e);
-              }}
-            >
-              <span className="fa fa-plus plus"></span>Add an expense
-            </p>
-          </TripCardStyles>
-        );
-      })}
-    </>
-  );
+function TripList(props ) {
+    function handleClick(e){
+        e.preventDefault();
+        props.toggleModalClass();
+
+    }   
+    return (
+        <>
+            {props.allTrips.map(trip=>{
+                return (
+                    <TripCardStyles onClick={ (e) =>{
+                        props.getSingleTrip(trip.id);
+                        }} 
+                        key={ trip.id } 
+                    >
+                        <img src ={ image } atl = { trip.destination } />
+                        <h2> { trip.destination } </h2>
+                        <h4> { trip.start_date } </h4>
+                        <p
+                            onClick={ e =>{
+                                handleClick(e);
+                            }}
+                        >
+                           <span className="fa fa-plus plus"></span>Add an expense
+                        </p>
+                        <Link to={`/trips/${trip.id}`}><button>Add Users</button></Link>
+                    </TripCardStyles>
+                )
+
+                  })}
+        </>
+    )
 }
 
 export default TripList;
