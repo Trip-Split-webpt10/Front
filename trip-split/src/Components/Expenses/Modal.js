@@ -35,7 +35,7 @@ function Modal(props) {
     }
     return (
         <ModalStyles>
-           
+            <h1 onClick={props.toggleModalClass}>Close</h1>
             <form onSubmit={handleSubmit}> 
                 <h2>Add an expense to your Trip</h2>
                 <input type='text' placeholder='Expense Name' name='name' value = { expense.name }  onChange={ handleChange }/>
@@ -95,4 +95,12 @@ const ModalStyles = styled.div`
         font-weight: bold;
         margin-bottom: 20px;
     }
+    h1{
+        float: right;
+        cursor: pointer;
+        color: #000000;
+        font-weight: bolder;
+        font-size: 1.5rem;
+        margin-right: 15px;
+        }
 `;
