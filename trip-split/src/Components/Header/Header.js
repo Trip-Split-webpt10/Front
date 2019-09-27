@@ -55,8 +55,9 @@ const HeaderStyles = styled.div`
         border-radius: 15px;
     }
     li:hover{
-        background: lightgrey;
+        background: lightpink;
         transition-duration: 0.8s;
+
     }
     a{
         text-decoration: none;
