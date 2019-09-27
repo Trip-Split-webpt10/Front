@@ -2,68 +2,67 @@
 import React, {useState, useEffect} from 'react';
 
 import styled from 'styled-components';
-import axios from 'axios'
+import Axios from 'axios'
 import TripList from './TripList';
 import ExpensePage from '../Expenses/ExpensePage';
 
-function Trips(props) {
-    const [allTrips, setALlTrips] = useState([]);
+function Trips( props ) {
+    const [ allTrips, setALlTrips ] = useState([]);
     //state for handling class toggle on clicks
-    const [activeModal, setActiveModal ] = useState('hidden');
-    const [singleTrip, setSingleTrip] = useState([]);
-    const [tripId, setTripId ] = useState(null);
+    const [ activeModal, setActiveModal ] = useState('hidden');
+    const [ singleTrip, setSingleTrip]  = useState([]);
+    const [ tripId, setTripId ] = useState(null);
 
-    const toggleModalClass = ()=>{
-        let cssProperties = (activeModal === 'hidden') ? 'show' : 'hidden';
-        setActiveModal(cssProperties)
-       
+    const toggleModalClass = () => {
+        let cssProperties = ( activeModal === 'hidden' ) ? 'show' : 'hidden';
+        setActiveModal(cssProperties);
     }
-    function getAllTrips (){
+    function getAllTrips(){
         const url = 'https://trip-split-api.herokuapp.com/api/trips'
-        axios.get(url)
-            .then(res=>{
+        Axios.get( url )
+            .then( res => {
                 setALlTrips(res.data);
             })
-            .catch(err=>console.log)
+            .catch(err =>console.log)
     }   
     useEffect(()=>{
-        getAllTrips() 
+        getAllTrips();
     }, []);
     
-    function getSingleTrip(id){
+    function getSingleTrip( id ) {
+        setTripId( id );
         const url = `https://trip-split-api.herokuapp.com/api/trips/${id}/expenses`
-        axios.get(url)
+        Axios.get(url)
             .then(res=>{
-                console.log(res)
-                console.log(id)
                 setSingleTrip(res.data);
             })
             .catch(err=>console.log)
     }
     return (
         <>
-      
-        <TripsStyles>
-           <TripList 
-           props = {props}
-            allTrips ={allTrips}
-            toggleModalClass = {toggleModalClass}
-            setTripId = { setTripId }
-            getSingleTrip ={ getSingleTrip }
-           />
-        </TripsStyles>
-        <ExpensePage 
-            activeModal ={ activeModal }
-            toggleModalClass = { toggleModalClass }
-            singleTrip ={ singleTrip }
-        />
+            <TripsStyles>
+            <TripList 
+            props = {props}
+                allTrips ={allTrips}
+                toggleModalClass = {toggleModalClass}
+                setTripId = { setTripId }
+                getSingleTrip ={ getSingleTrip }
+            />
+            </TripsStyles>
+            <ExpensePage 
+                activeModal ={ activeModal }
+                toggleModalClass = { toggleModalClass }
+                singleTrip ={ singleTrip }
+                tripId = {tripId}
+                history = {props.history}
+            />
         </>
-    )
+    );
 }
 
-export default Trips
+export default Trips;
 
-
+//Styles
 const TripsStyles = styled.div`
     position: relative;
     margin: 60px auto 0 auto;

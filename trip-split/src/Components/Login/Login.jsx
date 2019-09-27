@@ -22,7 +22,9 @@ function Login({history}) {
 
     const handleSubmit = (e)=>{
         e.preventDefault()
-        isLogin ? login({user, history}) : register(user);
+        console.log(user)
+        isLogin ? login(user, history) : register(user);
+        console.log(history)
     }
     
     return (
