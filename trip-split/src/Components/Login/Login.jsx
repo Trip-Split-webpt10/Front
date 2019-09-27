@@ -1,7 +1,5 @@
 import React,  {useState} from 'react';
 import styled from 'styled-components';
-import {withFormik, Form, Field} from 'formik'
-import Axios from 'axios';
 import login from './login';
 import register  from './register'
 

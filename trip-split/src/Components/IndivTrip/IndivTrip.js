@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import './indiv.css';
 import AddUserForm from './IndivForms/newFriendForm';
+import styled from 'styled-components';
 
 
 
@@ -20,7 +21,7 @@ function IndivTrip(trip) {
             .catch(err => {
                 console.log(err)
             })
-    },[Users])
+    }, [Users])
 
     function calc() {
         const totalCost = Cost.map((x) => {
@@ -35,40 +36,91 @@ function IndivTrip(trip) {
             return "No Expenses Listed"
         }
         else {
-            return "$"+ Math.floor(total);
+            return "$" + Math.floor(total);
         }
     }
 
     const addToSavedList = newUser => {
         setUsers([...Users, newUser]);
-      };
+    };
 
+    const IndivContainer = styled.div`
+        width: 75%;
+        margin: 0 auto;
+        margin-top: 6%;
+        border: 1px solid black;
+        border-radius: 10px;
+        padding: 3%;
+        margin-bottom: 2%;
+    `;
+
+    const HeaderIndiv = styled.div`
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+        background-color: #d3d3d3;
+        padding: 2%;
+        border-radius: 10px;
+    `;
+
+    const FlexDiv = styled.div`
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between;
+        align-items: center;
+    `;
+
+    const UserCost = styled.div`
+        display: flex;
+        flex-flow: row nowrap;
+        width: 50%;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    `;
+
+    const UserFlex = styled.div`    
+        display: flex;
+        flex-flow: column nowrap;
+        width: 50%;
+    `;
+    const UserFlex2 = styled.div`
+        display: flex;
+        flex-flow: column nowrap;
+        width: 50%;
+    `;
+
+    const MT50 = styled.div`
+        margin-top: 5%;
+    `;
+
+    const Width75 = styled.div`
+        width: 75%;
+    `;
     return (
-        <div className="IndivContainer">
-            <div className="HeaderIndiv">
+        <IndivContainer>
+            <HeaderIndiv>
                 Trip Destination: {`${Trip.destination}`}
-            </div>
-            <div className="FlexDiv">
-                <div className="Form">
+            </HeaderIndiv>
+            <FlexDiv>
+                <Width75>
                     <AddUserForm trip={trip} Users={Users} addToSavedList={addToSavedList}></AddUserForm>
-                </div>
+                </Width75>
                 <hr></hr>
-                <div className="UserCost">
-                    <div className="UserFlex">
-                        <div className="UserCostHeader">Total People: {Users.length}</div>
+                <UserCost>
+                    <UserFlex>
+                        <MT50>Total People: {Users.length}</MT50>
                         {Users.map((x, index) => {
-                            return <div className="UsersList" key={index}>{x.name}</div>
+                            return <MT50 key={index}>{x.name}</MT50>
                         })}
-                    </div>
-                    <div className="UserFlex2">
-                        <div className="calc"><span>Total Cost:</span>${calc()}</div>
-                        <div className="calc"><span>Cost Per Person:</span> {costPerPerson(Users.length)}</div>
-                    </div>
-                </div>
-                <div>
-                </div>
-            </div>
-        </div>
+                    </UserFlex>
+                    <UserFlex2>
+                        <MT50><span>Total Cost:</span>${calc()}</MT50>
+                        <MT50><span>Cost Per Person:</span> {costPerPerson(Users.length)}</MT50>
+                    </UserFlex2>
+                </UserCost>
+            </FlexDiv>
+        </IndivContainer>
     );
 }
 

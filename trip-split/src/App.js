@@ -6,7 +6,7 @@ import CreateATrip from './Components/CreateATrip/CreateTrip';
 import Trips from './Components/Trips/Trips'
 import AboutUs from './Components/AboutUs/AboutUs'
 import Jumbotron from './Components/HomePage/Jumbotron/Jumbotron'
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 import Login from './Components/Login/Login.jsx';
 import IndivTrip from './Components/IndivTrip/IndivTrip';
 
@@ -25,7 +25,7 @@ function App() {
         path="/createtrip"
         exact
         render={props => {
-          return <CreateATrip />;
+          return <CreateATrip  />;
         }}
       />
       <Route
