@@ -70,18 +70,14 @@ export default withFormik({
     validationSchema: yup.object().shape({
         username: yup.string().required('Username is a required field!')
     }),
-    handleSubmit: (values, trip, {setUsers}) => {
+    handleSubmit: (values, trip) => {
         Axios.post(`https://trip-split-api.herokuapp.com/api/trips/${trip.props.trip.match.params.id}/users`, values)
-            .then((response) => {
-                if(response.statusCode == 503){
-                    return MySwal.fire({type:'info', title:'User Already Exists'})
-                }else{
+            .then(() => {
                     return MySwal.fire({type:'success', title:'User Added Successfully',text:'Good Job!'})
-                }
             })
-            .catch((error) => {
-                // return MySwal.fire({type:'error', title:'There was an error adding the user!', text: 'Try again!'})
-                console.log(error)
+            .catch(() => {
+                return MySwal.fire({type:'error', title:'There was an error adding the user!', text: 'Try again!'})
+
             })
     }
 })(AddUserForm)

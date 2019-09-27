@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import image from './images/placeholder12.png'
-
-import TripCard from './TripCard';
-
+import {Link} from 'react-router-dom';
 
 function TripList(props ) {
     function handleClick(e){
@@ -30,6 +28,7 @@ function TripList(props ) {
                         >
                            <span className="fa fa-plus plus"></span>Add an expense
                         </p>
+                        <Link to={`/trips/${trip.id}`}><button>Add Users</button></Link>
                     </TripCardStyles>
                 )
 
