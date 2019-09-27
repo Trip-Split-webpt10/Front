@@ -6,6 +6,7 @@ import Trips from './Components/Trips/Trips'
 import AboutUs from './Components/AboutUs/AboutUs'
 import Jumbotron from './Components/HomePage/Jumbotron/Jumbotron'
 import {BrowserRouter as Router,Route,Link} from 'react-router-dom';
+import IndivTrip from './Components/IndivTrip/IndivTrip';
 import Login from './Components/Login/Login';
 
 function App() {
@@ -56,6 +57,19 @@ function App() {
 
           return (
             <Login
+              {...props}
+            />)
+        }}
+      />
+    <Route 
+        path = '/trips/:id'
+        exact
+        render= {props =>{
+
+          return (
+            <IndivTrip
+                path = '/trips/:id'
+                exact
               {...props}
             />)
         }}

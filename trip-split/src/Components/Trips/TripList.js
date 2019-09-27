@@ -2,34 +2,33 @@ import React from 'react';
 import styled from 'styled-components';
 import image from './images/placeholder12.png'
 import TripCard from './TripCard';
+import styled from 'styled-components';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-function TripList(props ) {
-    function handleClick(e){
-        e.preventDefault();
-        props.toggleModalClass();
-    }   
+
+const StyledLink = styled(Link)`
+    text-decoration: none;
+    &:focus, &:visited, &:link, &:active {
+        text-decoration: none;
+    }
+    &:hover{
+      color: grey;
+    }
+    color: black;
+`;
+
+function TripList({ props, allTrips }) {
     return (
         <>
-            {props.allTrips.map(trip=>{
-                return (
-                    <TripCardStyles onClick={ (e)=>{
-                        props.getSingleTrip(trip.id);
-                        }} 
-                        key={ trip.id } 
-                    >
-                        <img src ={image} atl ={trip.destination} />
-                        <h2>{trip.destination}</h2>
-                        <h4>{trip.start_date}</h4>
-                        <p
-                            onClick={handleClick}
-
-                            >
-                            Add an expense
-                        </p>
-                    </TripCardStyles>
-                )
-
-                  })}
+            {allTrips.map(trip => {
+                return <StyledLink to={`/trips/${trip.id}`}>
+                    <TripCard
+                        {...props}
+                        key={trip.destination}
+                        trip={trip}
+                    />
+                </StyledLink>
+            })}
         </>
     )
 }
