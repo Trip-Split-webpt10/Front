@@ -5,14 +5,8 @@ import CreateATrip from './Components/CreateATrip/CreateTrip';
 import Trips from './Components/Trips/Trips'
 import AboutUs from './Components/AboutUs/AboutUs'
 import Jumbotron from './Components/HomePage/Jumbotron/Jumbotron'
-<<<<<<< Updated upstream
-import {BrowserRouter as Router,Route,Link} from 'react-router-dom';
-import Login from './Components/Login/Login';
-=======
-import {BrowserRouter as Route} from 'react-router-dom';
-import IndivTrip from './Components/IndivTrip/IndivTrip';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import Login from './Components/Login/Login.jsx';
->>>>>>> Stashed changes
 
 function App() {
   return (
