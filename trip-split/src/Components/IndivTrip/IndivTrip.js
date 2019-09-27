@@ -22,20 +22,20 @@ function IndivTrip(trip) {
             })
     }, [setUsers])
 
-    function calc(){
-        const totalCost = Cost.map((x)=>{
+    function calc() {
+        const totalCost = Cost.map((x) => {
             return x.price;
         })
-        return totalCost.reduce((a,b) => a + b, 0 );
+        return totalCost.reduce((a, b) => a + b, 0);
     }
 
-    function costPerPerson(amountOfUsers){
+    function costPerPerson(amountOfUsers) {
         let total = calc() / amountOfUsers;
-        if (!total){
+        if (!total) {
             return "No Expenses Listed"
         }
-        else{
-            return total;
+        else {
+            return Math.floor(total);
         }
     }
     return (
@@ -45,15 +45,20 @@ function IndivTrip(trip) {
             </div>
             <div className="FlexDiv">
                 <div className="Form">
-                    <AddUserForm trip={trip} Users={Users}></AddUserForm>
+                    <AddUserForm trip={trip} Users={Users} setUsers={setUsers}></AddUserForm>
                 </div>
+                <hr></hr>
                 <div className="UserCost">
-                    <div className="UserCostHeader">Total People: {Users.length}</div>
-                    {Users.map((x)=>{
-                        return <div className="UsersList" key={x.id}>{x.name}</div>
-                    })}
-                    <div className="tripStats">Total Cost: {calc()}</div>
-                    <div className="tripStats">Cost Per Person: {costPerPerson(Users.length)}</div>
+                    <div className="UserFlex">
+                        <div className="UserCostHeader">Total People: {Users.length}</div>
+                        {Users.map((x) => {
+                            return <div className="UsersList" key={x.id}>{x.name}</div>
+                        })}
+                    </div>
+                    <div className="UserFlex2">
+                        <div className="calc"><span>Total Cost:</span> ${calc()}</div>
+                        <div className="calc"><span>Cost Per Person:</span> ${costPerPerson(Users.length)}</div>
+                    </div>
                 </div>
                 <div>
                 </div>

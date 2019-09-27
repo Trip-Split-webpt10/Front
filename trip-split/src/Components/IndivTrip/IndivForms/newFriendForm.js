@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { withFormik, Form, Select } from 'formik';
+import { withFormik, Form } from 'formik';
 import * as yup from 'yup';
 import Axios from 'axios';
 import styled from 'styled-components';
@@ -48,9 +48,11 @@ const AddUserForm = ({ errors, touched, handleChange, handleBlur, values}) => {
             <Header>Add Trip Members</Header>
             <Form>
                 <FormDisplayFlex>
-                    <select id='fieldstyle' name="username" value={values.username} onChange={handleChange} onBlur={handleBlur}>
+                {touched.username && errors.username && <p className="error">{errors.username}</p>}
+                    <select name="username" value={values.username} onChange={handleChange} onBlur={handleBlur}>
+                        <option value="''" label="Please select a username" className="dropDown"/>
                         {Usernames.map((x,index)=>{
-                            return <option value={x.username} key={index} label={x.username} />
+                            return <option className="dropDown" value={x.username} key={index} label={x.username} />
                         })}
                     </select>
                     <ButtonNewFriend type="submit" className="AddFriendButton">Submit</ButtonNewFriend>
@@ -61,23 +63,26 @@ const AddUserForm = ({ errors, touched, handleChange, handleBlur, values}) => {
 }
 
 export default withFormik({
-    mapPropsToValues: () => {
+    mapPropsToValues: (values) => {
         return {
-            username: ({username: ''})
+            username: values.username || ''
         }
     },
     validationSchema: yup.object().shape({
         username: yup.string().required('Username is a required field!')
     }),
-    handleSubmit: (values, trip) => {
-        console.log(values)
+    handleSubmit: (values, trip, {setUsers}) => {
         Axios.post(`https://trip-split-api.herokuapp.com/api/trips/${trip.props.trip.match.params.id}/users`, values)
-            .then(() => {
-                return MySwal.fire({type:'success', title:'User Added Successfully',text:'Good Job!'})
+            .then((response) => {
+                if(response.statusCode == 503){
+                    return MySwal.fire({type:'info', title:'User Already Exists'})
+                }else{
+                    return MySwal.fire({type:'success', title:'User Added Successfully',text:'Good Job!'})
+                }
             })
             .catch((error) => {
                 // return MySwal.fire({type:'error', title:'There was an error adding the user!', text: 'Try again!'})
-                console.log(error.response)
+                console.log(error)
             })
     }
 })(AddUserForm)
