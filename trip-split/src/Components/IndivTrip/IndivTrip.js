@@ -20,13 +20,13 @@ function IndivTrip(trip) {
             .catch(err => {
                 console.log(err)
             })
-    },[setUsers])
+    },[Users])
 
     function calc() {
         const totalCost = Cost.map((x) => {
             return x.price;
         })
-        return "$"+totalCost.reduce((a, b) => a + b, 0);
+        return totalCost.reduce((a, b) => a + b, 0);
     }
 
     function costPerPerson(amountOfUsers) {
@@ -35,7 +35,7 @@ function IndivTrip(trip) {
             return "No Expenses Listed"
         }
         else {
-            return "$" + Math.floor(total);
+            return "$"+ Math.floor(total);
         }
     }
 
@@ -56,12 +56,12 @@ function IndivTrip(trip) {
                 <div className="UserCost">
                     <div className="UserFlex">
                         <div className="UserCostHeader">Total People: {Users.length}</div>
-                        {Users.map((x) => {
-                            return <div className="UsersList" key={x.id}>{x.name}</div>
+                        {Users.map((x, index) => {
+                            return <div className="UsersList" key={index}>{x.name}</div>
                         })}
                     </div>
                     <div className="UserFlex2">
-                        <div className="calc"><span>Total Cost:</span> {calc()}</div>
+                        <div className="calc"><span>Total Cost:</span>${calc()}</div>
                         <div className="calc"><span>Cost Per Person:</span> {costPerPerson(Users.length)}</div>
                     </div>
                 </div>

@@ -10,7 +10,6 @@ function Trips(props) {
   //state for handling class toggle on clicks
   const [activeModal, setActiveModal] = useState("hidden");
   const [singleTrip, setSingleTrip] = useState([]);
-  const [tripId, setTripId] = useState(null);
 
   const toggleModalClass = () => {
     let cssProperties = activeModal === "hidden" ? "show" : "hidden";
@@ -23,7 +22,7 @@ function Trips(props) {
       .then(res => {
         setALlTrips(res.data);
       })
-      .catch(err => console.log);
+      .catch(err => console.log(err));
   }
   useEffect(() => {
     getAllTrips();
@@ -34,11 +33,9 @@ function Trips(props) {
     axios
       .get(url)
       .then(res => {
-        console.log(res);
-        console.log(id);
         setSingleTrip(res.data);
       })
-      .catch(err => console.log);
+      .catch(err => console.log(err));
   }
   return (
     <>
@@ -47,7 +44,6 @@ function Trips(props) {
           props={props}
           allTrips={allTrips}
           toggleModalClass={toggleModalClass}
-          setTripId={setTripId}
           getSingleTrip={getSingleTrip}
         />
       </TripsStyles>
