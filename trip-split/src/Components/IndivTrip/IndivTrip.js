@@ -56,7 +56,8 @@ function IndivTrip(trip) {
         width: 75%;
         margin: 0 auto;
         margin-top: 6%;
-        border: 1px solid black;
+        border: 1px solid #D3D3D3;
+        box-shadow: 8px 8px 3px lightgrey;
         border-radius: 10px;
         padding: 3%;
         margin-bottom: 2%;
