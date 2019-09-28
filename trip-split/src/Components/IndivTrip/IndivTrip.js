@@ -25,7 +25,6 @@ function IndivTrip(trip) {
                 Axios.get(urlAllUsers)
                 .then(response => {
                     setAllUsers(response.data)
-                    console.log(response.data)
                 })
             })
             .catch(err => {
