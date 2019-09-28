@@ -38,7 +38,7 @@ function Login({history}) {
                     <li onClick={()=>{
                         setIsLogin(false)
                         }}>
-                        Sing Up
+                        Sign Up
                     </li>
                 </ul>
                 { isLogin 
