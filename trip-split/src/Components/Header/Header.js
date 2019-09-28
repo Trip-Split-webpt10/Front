@@ -14,8 +14,8 @@ function Header() {
             <div className='links'>
                 <ul>
                     <li><Link to ='/'>Home</Link></li>
-                    <li><Link to ='/trips'>Recent Trips</Link></li>
                     <li><Link to ='/createtrip'>Create Trip</Link></li>
+                    <li><Link to ='/trips'>Manage Trips</Link></li>
                     <li><Link to ='/aboutus'>About Us</Link></li>
                     <li><Link to ='/login'>Login</Link></li>
                 </ul>

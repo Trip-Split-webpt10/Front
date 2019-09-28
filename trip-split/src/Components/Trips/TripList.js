@@ -18,7 +18,7 @@ function TripList(props ) {
                         }} 
                         key={ trip.id } 
                     >
-                        <img src ={ image } atl = { trip.destination } />
+                        <img src ={ image } alt = { trip.destination } />
                         <h2> { trip.destination } </h2>
                         <h4> { trip.start_date } </h4>
                         <p
