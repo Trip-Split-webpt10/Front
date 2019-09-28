@@ -60,6 +60,7 @@ function IndivTrip(trip) {
         border-radius: 10px;
         padding: 3%;
         margin-bottom: 2%;
+        font-family: 'Quicksand', sans-serif;
     `;
 
     const HeaderIndiv = styled.div`
@@ -117,7 +118,7 @@ function IndivTrip(trip) {
                 <hr></hr>
                 <UserCost>
                     <UserFlex>
-                        <MT50>Total People: {Users.length}</MT50>
+                        <MT50><span>Total Members:</span> {Users.length}</MT50>
                         {Users.map((x, index) => {
                             return <MT50 key={index}>{x.name}</MT50>
                         })}

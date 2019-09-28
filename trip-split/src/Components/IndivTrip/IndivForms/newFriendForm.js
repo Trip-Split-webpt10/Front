@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React,{useEffect} from 'react';
 import { withFormik, Form} from 'formik';
 import * as yup from 'yup';
 import Axios from 'axios';
@@ -15,12 +15,14 @@ const FormDisplayFlex = styled.div`
     flex-flow: column nowrap;
     margin: 0 auto;
     margin-top: 2%;
+    font-family: 'Quicksand', sans-serif;
 `;
 const Header = styled.h1`
     margin: 5% 0% 0% 0%;
     text-align: center;
     font-size: 1rem;
     font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
 `;
 
 const ButtonNewFriend = styled.button`

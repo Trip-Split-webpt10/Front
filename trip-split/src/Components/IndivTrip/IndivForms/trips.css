@@ -1,4 +1,9 @@
 #dropDown{
     height: 40px;
     border-radius: 5px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.error{
+    margin-bottom: 10px;
 }

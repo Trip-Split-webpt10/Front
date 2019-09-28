@@ -56,9 +56,10 @@ export default withFormik({
         start_date: yup.string().required('Start Date is a required field'),
         end_date: yup.string().required('End Date is a required field!')
     }),
-    handleSubmit: (values) => {
+    handleSubmit: (values, {resetForm}) => {
         Axios.post('https://trip-split-api.herokuapp.com/api/trips', values)
             .then(() => {
+                resetForm();
                 return MySwal.fire({type:'success', title:'Trip Created Successfully',text:'Good Job!'})
             })
             .catch((error) => {
