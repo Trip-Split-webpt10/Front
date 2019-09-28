@@ -14,15 +14,15 @@ const FormDisplayFlex = styled.div`
     flex-flow: column nowrap;
     margin: 0 auto;
     margin-top: 2%;
+    font-family: 'Quicksand', sans-serif;
 `;
 const Header = styled.h1`
     margin: 5% 0% 0% 0%;
     text-align: center;
     font-size: 2rem;
     font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
 `;
-
-
 
 const CreateATripForm = ({ errors, touched }) => {
     return (
