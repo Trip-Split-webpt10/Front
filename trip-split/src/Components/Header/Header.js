@@ -64,7 +64,7 @@ const HeaderStyles = styled.div`
         color: black;
         font-size: 1.02rem;
         font-weight: bolder;
-        font-family: Roboto monospace;    }
+        font-family: 'Quicksand', sans-serif;    }
 
     img{
         width: 25%;

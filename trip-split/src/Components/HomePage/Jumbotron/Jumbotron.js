@@ -22,7 +22,7 @@ function Jumbotron() {
         <JumbotronStyles>
             <Carousel randomImages = {randomImages} />
             <div className='suggestionContainer'>
-                <h2>Inspiration For Your Next Trip</h2>
+                <H2>Inspiration For Your Next Trip</H2>
                 <SuggestionCards />
             </div>
         </JumbotronStyles>
@@ -38,6 +38,7 @@ const JumbotronStyles = styled.div`
     padding: 10 10px;
     min-height: 700px;
     padding: 1em 0em;
+    font-family: 'Quicksand', sans-serif;
 
     .suggestionContainer{
         margin-top: 20px;
@@ -48,5 +49,9 @@ const JumbotronStyles = styled.div`
             font-weight: bold;
         }
     }
+`;
 
+const H2 = styled.div`
+    font-size: 2rem;
+    font-weight: bolder;
 `;

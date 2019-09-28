@@ -11,7 +11,7 @@ const CardStyling = styled.div`
     border: solid #808080 2px;
     background-color: #FAFAFA;
     border-radius: 10px;
-    font-family: 'Libre Franklin', sans-serif;
+    font-family: 'Quicksand', sans-serif;
 `;
 
 const CardH1 = styled.h1`

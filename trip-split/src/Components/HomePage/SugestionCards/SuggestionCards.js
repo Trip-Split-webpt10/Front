@@ -34,10 +34,13 @@ const ContainerStyles = styled.div`
         width: 30%;
         margin: 15px 0px;
         box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+        border-radius: 2px;
     }
     .header{
-        font-size: 1.5rem;
+        font-size: 2rem;
         font-weight: bolder;
+        background-color: #D3D3D3;
+        height: 35px;
     }
     .description{
         text-align: center;
