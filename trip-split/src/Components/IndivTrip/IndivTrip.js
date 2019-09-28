@@ -7,21 +7,31 @@ import styled from 'styled-components';
 
 
 function IndivTrip(trip) {
-    const [Trip, setTrips] = useState([])
+    const [Trip, setTrips] = useState([]);
     const [Users, setUsers] = useState([]);
     const [Cost, setCost] = useState([]);
+    const [allUsers, setAllUsers] = useState([]);
+
     useEffect(() => {
         const url = `https://trip-split-api.herokuapp.com/api/trips/${trip.match.params.id}`
+        const urlAllUsers = `https://trip-split-api.herokuapp.com/api/users/`;
         Axios.get(url)
             .then(response => {
-                setTrips(response.data.trip)
-                setUsers(response.data.users)
+                setTrips(response.data.trip);
+                setUsers(response.data.users);
                 setCost(response.data.expenses);
+            })
+            .then(() => {
+                Axios.get(urlAllUsers)
+                .then(response => {
+                    setAllUsers(response.data)
+                    console.log(response.data)
+                })
             })
             .catch(err => {
                 console.log(err)
             })
-    }, [Users])
+    }, [])
 
     function calc() {
         const totalCost = Cost.map((x) => {
@@ -41,7 +51,8 @@ function IndivTrip(trip) {
     }
 
     const addToSavedList = newUser => {
-        setUsers([...Users, newUser]);
+        const foundUser = allUsers.find((user)=>{return user.username === newUser})
+        setUsers([...Users, foundUser]);
     };
 
     const IndivContainer = styled.div`
@@ -79,7 +90,7 @@ function IndivTrip(trip) {
         justify-content: center;
     `;
 
-    const UserFlex = styled.div`    
+    const UserFlex = styled.div`
         display: flex;
         flex-flow: column nowrap;
         width: 50%;
@@ -104,7 +115,7 @@ function IndivTrip(trip) {
             </HeaderIndiv>
             <FlexDiv>
                 <Width75>
-                    <AddUserForm trip={trip} Users={Users} addToSavedList={addToSavedList}></AddUserForm>
+                    <AddUserForm trip={trip} allUsers={allUsers} addToSavedList={addToSavedList}></AddUserForm>
                 </Width75>
                 <hr></hr>
                 <UserCost>
