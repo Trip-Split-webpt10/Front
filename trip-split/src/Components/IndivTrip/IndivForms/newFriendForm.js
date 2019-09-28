@@ -42,7 +42,7 @@ const AddUserForm = ({ errors, touched, handleChange, handleBlur, values, addToS
                 <FormDisplayFlex>
                 {touched.username && errors.username && <p className="error">{errors.username}</p>}
                     <select name="username" id="dropDown" value={values.username} onChange={handleChange} onBlur={handleBlur}>
-                        <option value="''" label="Please select a username" disabled/>
+                        <option value='' label="Please select a username" disabled/>
                         {allUsers && Array.isArray(allUsers) && allUsers.length > 0 && allUsers.map((x,index)=>{
                             return <option value={x.username} key={index} label={x.username} />
                         })}
@@ -55,22 +55,20 @@ const AddUserForm = ({ errors, touched, handleChange, handleBlur, values, addToS
 }
 
 export default withFormik({
-    mapPropsToValues: ({username}) => {
+    mapPropsToValues: (values) => {
         return {
-            username: username || ''
+            username: values.username || ''
         }
     },
     validationSchema: yup.object().shape({
-        username: yup.string().required('Username is a required field!')
+        username: yup.string().required('Please select a name')
     }),
     handleSubmit: (values, trip) => {
-        console.log(trip.props.trip.match.params.id)
         Axios.post(`https://trip-split-api.herokuapp.com/api/trips/${trip.props.trip.match.params.id}/users`, values)
             .then(() => {
                 return MySwal.fire({type:'success', title:'User Added Successfully',text:'Good Job!'})
             })
-            .catch((response) => {
-                console.log(response)
+            .catch(() => {
                 return MySwal.fire({type:'error', title:'There was an error adding the user!', text: 'Try again!'})
             })
     }

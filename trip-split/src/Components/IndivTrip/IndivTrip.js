@@ -4,8 +4,6 @@ import './indiv.css';
 import AddUserForm from './IndivForms/newFriendForm';
 import styled from 'styled-components';
 
-
-
 function IndivTrip(trip) {
     const [Trip, setTrips] = useState([]);
     const [Users, setUsers] = useState([]);
@@ -114,7 +112,7 @@ function IndivTrip(trip) {
             </HeaderIndiv>
             <FlexDiv>
                 <Width75>
-                    <AddUserForm trip={trip} allUsers={allUsers} addToSavedList={addToSavedList}></AddUserForm>
+                    <AddUserForm trip={trip} allUsers={allUsers} Users={Users} addToSavedList={addToSavedList}></AddUserForm>
                 </Width75>
                 <hr></hr>
                 <UserCost>

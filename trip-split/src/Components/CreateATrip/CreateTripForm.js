@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { withFormik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import Axios from 'axios';
@@ -22,16 +22,9 @@ const Header = styled.h1`
     font-weight: bold;
 `;
 
-const Row = styled.div`
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
-    margin-bottom: 2%;
-`;
 
 
 const CreateATripForm = ({ errors, touched }) => {
-    const [trip, setTrips] = useState([])//not used currently
     return (
         <>
             <Header>Create A Trip</Header>
